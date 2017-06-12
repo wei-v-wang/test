@@ -8,7 +8,7 @@ mkdir /tmp/ILSVRC2012_img_train
 
 mkdir /tmp/ILSVRC2012_img_val
 
-cp ????/ILSVRC2012_img_train.tar /tmp/ILSVRC2012_img_train 
+cp /tmp/ILSVRC2012_img_train.tar /tmp/ILSVRC2012_img_train 
 cd /tmp/ILSVRC2012_img_train 
 
 tar -xvf ILSVRC2012_img_train.tar # && rm -f ILSVRC2012_img_train.tar
@@ -19,35 +19,42 @@ find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "$
 #Make sure to check the completeness of the decompression, you should have 1,281,167 images in train folder
 #To extract validation data
 
-cp ???/ILSVRC2012_img_val.tar /tmp/ILSVRC2012_img_val/ 
+cp /tmp/ILSVRC2012_img_val.tar /tmp/ILSVRC2012_img_val/ 
 cd /tmp/ILSVRC2012_img_val 
 tar -xvf ILSVRC2012_img_val.tar
 
 
-### create lmdb 
+##### 
+# WARNING: Proceed only when all above are finished ###
 
-# modify /tmp/caffe/./example/imagenet/./create_imagenet.sh
+# When the above is finished, Please follow the following instructions to create lmdb 
 
-#IN_DATA_ROOT=/tmp/ILSVRC2012_img_train/
-#VAL_DATA_ROOT=/tmp/ILSVRC2012_img_val/
-#RESIZE=true
-#if $RESIZE; then
-# RESIZE_HEIGHT=256
-# RESIZE_WIDTH=256
-#else	
-# RESIZE_HEIGHT=0
-# RESIZE_WIDTH=0
-#fi
-#GLOG_logtostderr=1 $TOOLS/convert_imageset \
-#   --resize_height=$RESIZE_HEIGHT \
-#   --resize_width=$RESIZE_WIDTH \
-#   --shuffle \ 
-#   -encoded=true \
-#   $TRAIN_DATA_ROOT \
-#   $DATA/train.txt \
-#   $EXAMPLE/ilsvrc12_train_lmdb
-#
-#echo "Creating val lmdb..."
+vim /tmp/caffe/./example/imagenet/./create_imagenet.sh
+
+# change create_imagenet.sh according to the following setting
+
+IN_DATA_ROOT=/tmp/ILSVRC2012_img_train/
+VAL_DATA_ROOT=/tmp/ILSVRC2012_img_val/
+RESIZE=true
+if $RESIZE; then
+ RESIZE_HEIGHT=256
+ RESIZE_WIDTH=256
+else	
+ RESIZE_HEIGHT=0
+ RESIZE_WIDTH=0
+fi
+GLOG_logtostderr=1 $TOOLS/convert_imageset \
+   --resize_height=$RESIZE_HEIGHT \
+   --resize_width=$RESIZE_WIDTH \
+   --shuffle \ 
+   -encoded=true \
+   $TRAIN_DATA_ROOT \
+   $DATA/train.txt \
+   $EXAMPLE/ilsvrc12_train_lmdb
+
+echo "Creating val lmdb..."
+
+# after you are done with above, please execute the following
 
 cd /tmp/caffe
 ./example/imagenet/./create_imagenet.sh
