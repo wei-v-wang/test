@@ -1,0 +1,227 @@
+#!/bin/sh
+set -x
+
+#numnodes=$1
+#numprocs=$1
+node_nums=$1
+ROOT_DIR=$2
+arch_=$3
+topos=$4
+branches=$5
+run_times=$6
+iteration=$7
+batch_size=$8
+mode=$9
+
+node_num_list=($(echo $node_nums | sed "s/,/ /g"))
+topo_list=($(echo $topos | sed "s/,/ /g"))
+branch_list=($(echo $branches | sed "s/,/ /g"))
+
+source ./common.sh
+# Names to configfile, binary (executable) files #
+total_num_nodes=`cat $PBS_NODEFILE | wc -l`
+nodenames=( `cat $PBS_NODEFILE | sort | uniq ` )
+
+
+# PSM2 configuration
+export PSM2_MQ_RNDV_HFI_WINDOW=2097152 # to workaround PSM2 bug in IFS 10.2 and 10.3
+export PSM2_IDENTIFY=1 # for debug
+export HFI_NO_CPUAFFINITY=1
+
+# IMPI configuration
+export I_MPI_FABRICS=tmi # tcp
+export I_MPI_TMI_PROVIDER=psm2
+#export I_MPI_FALLBACK=0
+#export I_MPI_DYNAMIC_CONNECTION=0
+#export I_MPI_SCALABLE_OPTIMIZATION=0
+# export I_MPI_PIN_MODE=lib
+#export I_MPI_PIN_DOMAIN=node
+export I_MPI_DEBUG=6
+
+threadspercore=1
+ppncpu=1
+
+cores=`lscpu | grep "Core(s) per socket:" | awk '{print $4}'`
+sockets=`lscpu | grep "Socket(s)" | awk  '{print $2}'`
+maxcores=$((cores*sockets))
+
+function set_env_vars
+{
+  nodes=$1
+  if [ ${nodes} -eq 1 ]; then
+     numservers=0
+  else
+    # MLSL configuration
+    if [ ${arch_} == bdw ]; then
+      numservers=2
+      listep=6,7,8,9
+    elif [ ${arch_} == knl ]; then
+      numservers=4
+      listep=6,7,8,9,10,11,12,13
+    elif [ ${arch_} == skl ]; then
+      numservers=2
+      listep=6,7,8,9
+    fi
+    export MLSL_SERVER_AFFINITY="${listep}"
+  fi
+
+  # MLSL configuration
+  export MLSL_LOG_LEVEL=0
+  export MLSL_NUM_SERVERS=${numservers}
+#   export EPLIB_DYNAMIC_SERVER=process
+
+  numthreads=$(((maxcores-numservers)*threadspercore))
+
+  # OMP configuration
+  if [ "$threadspercore" == "1" ]; then
+    affinitystr="proclist=[0-5,$((5+numservers+1))-$((maxcores-1))],granularity=thread,explicit"
+    export KMP_HW_SUBSET=1t
+  else
+    affinitystr="proclist=[0-5,$((5+numservers+1))-$((maxcores-1)),$((maxcores))-$((maxcores+5)),$((maxcores+5+numservers+1))-$((2*maxcores-1))],granularity=thread,explicit"
+    export KMP_HW_SUBSET=2t
+  fi
+  export KMP_AFFINITY=$affinitystr
+
+  echo THREAD SETTINGS: Affinity $affinitystr Threads $numthreads Placement $KMP_PLACE_THREADS
+}
+
+for numnodes in ${node_num_list[@]}
+#for ((numnodes=1; numnodes<=$total_num_nodes; numnodes*=2))
+do
+  echo "Run caffe with node ${numnodes}..."
+  set_env_vars $numnodes
+
+  let numprocs=numnodes
+  max_ppn=$((numprocs/numnodes))
+  numthreads_per_proc=$((numthreads/max_ppn))
+  echo numthreads_proc $numthreads_per_proc max_ppn $max_ppn
+
+  lmdb_dirs=(ilsvrc12_train_lmdb ilsvrc12_val_lmdb)
+
+  echo "Copy database..."
+  node_id=1
+  for node in "${nodenames[@]}"
+  do
+    for lmdb_dir in "${lmdb_dirs[@]}"
+    do
+      ssh ${node} "rm -rf /tmp/${lmdb_dir};mkdir /tmp/${lmdb_dir}"
+      if [ ${numnodes} -lt 8 ]; then
+        scp /lfs/est03_s/imagenet-db/CAFFE_2012/lmdb/db_32/${lmdb_dir}_0/data.mdb ${node}:/tmp/${lmdb_dir}/ # for tests only
+      else
+        scp /lfs/est03_s/imagenet-db/CAFFE_2012/lmdb/db_${numnodes}/${lmdb_dir}_$((node_id-1))/data.mdb ${node}:/tmp/${lmdb_dir}/
+      fi
+    done
+    if [ ${node_id} == ${numnodes} ]; then
+      break
+    fi
+    node_id=$((node_id+1))
+  done
+  echo "Copy database Finished."
+
+  for branch in ${branch_list[@]}
+  do
+    if [ "$branch" == "intelcaffe.mn_model_mlsl" ]; then
+      # TODO: should use argument to specify the group size
+      # macro for model parallelism from Intel Labs.
+      export MLSL_HYBRID_GROUP_SIZE=2
+    fi
+
+    CAFFE_WORK_DIR=${ROOT_DIR}/${branch}
+    cd ${CAFFE_WORK_DIR}
+
+    cp ${ROOT_DIR}/data/ilsvrc12/imagenet_mean.binaryproto ./data/ilsvrc12/
+
+    xeonbin="./build/tools/caffe train"
+
+    for topo in ${topo_list[@]}
+    do
+      rm -r ./$topo
+      cp ${ROOT_DIR}/${mode}/$topo ./$topo -a
+
+      solver_file=${topo}/solver.prototxt
+      model_file=${topo}/train_val.prototxt
+
+      if [ ${topo} == googlenet ]; then
+        if [ "$branch" == "intelcaffe.prv-mn" ]; then
+          echo -e "\nmn {\n    data_gather_blob: \"loss1/fc,loss1/conv\"\n    data_gather_blob: \"loss2/fc,loss2/conv\"\n    data_gather_blob: \"loss3/classifier,pool5/7x7_s1\"\n    data_gather_blob: \"label\"\n}" >> $model_file
+        fi
+      elif [ ${topo} == alexnet ]; then
+        if [ "$branch" == "intelcaffe.prv-mn" ]; then
+          echo -e "\nmn {\n    data_gather_blob: \"pool5\"\n    data_gather_blob: \"label\"\n}" >> $mode_file
+        fi
+      elif [ ${topo} == resnet ]; then
+        echo "To be implemented: $topo"
+      else
+        echo "Unsupported topology: $topo"
+        exit 1
+      fi
+      echo "Use prototxt: $solver_file"
+
+      # update batch size and iteration
+      if [ ${batch_size} -eq 0 ]; then
+        new_batch_size=$((1024/numnodes))
+      else
+        let new_batch_size=batch_size
+      fi
+      bsize=$(grep "batch_size" ./$model_file | head -n 1)
+      sed -i "s/$bsize/batch_size: ${new_batch_size}/" ./$model_file
+      grep "batch_size" ./$model_file | head -n 1
+
+      if [ ${iteration} -ne 0 ]; then
+        sed -i "s/max_iter: .*/max_iter: ${iteration}/" ./$solver_file
+        grep "max_iter:" ./$solver_file
+      fi
+
+      cfile=nodeconfig-${topo}-${arch_}-${numnodes}.txt
+
+      # Produce the configuration file for mpiexec. Each line of the config file contains a # host, environment, binary name.
+
+      rm -f $cfile
+
+      node_id=1
+      for node in "${nodenames[@]}"
+      do
+        if [ ${topo} == alexnet ]; then
+          scp data/ilsvrc12/imagenet_mean.binaryproto ${node}:/tmp/
+        fi
+
+        if [ ${arch_} == bdw ]; then
+          echo "-host ${node} -genv OMP_NUM_THREADS ${numthreads_per_proc} -n $max_ppn $xeonbin --solver $solver_file  -engine=MKL2017" >> $cfile
+        elif [ ${arch_} == knl ]; then
+          echo "-host ${node} -genv OMP_NUM_THREADS ${numthreads_per_proc} -n $max_ppn numactl --preferred=0 $xeonbin --solver $solver_file -engine=MKL2017" >> $cfile
+        elif [ ${arch_} == skl ]; then
+          echo "-host ${node} -genv OMP_NUM_THREADS ${numthreads_per_proc} -n $max_ppn $xeonbin --solver $solver_file -engine=MKL2017" >> $cfile
+        fi
+
+        if [ ${node_id} == ${numnodes} ]; then
+          break
+        fi
+        node_id=$((node_id+1))
+      done
+
+      for ((i=0; i<run_times; i++))
+      do
+        log_file=outputCluster-${topo}-${arch_}-${numnodes}-${i}.txt
+        time GLOG_minloglevel=0 mpiexec.hydra -l -configfile $cfile 2>&1 | tee ${log_file}
+      done
+    done
+  done
+  cd ${ROOT_DIR}
+done
+
+cnt=0
+for node in "${nodenames[@]}"
+do
+  for lmdb_dir in "${lmdb_dirs[@]}"
+  do
+    ssh ${node} "rm -rf /tmp/{$lmdb_dir}"
+  done
+  ssh ${node} "rm -f /tmp/imagenet_mean.binaryproto"
+
+  if [ $cnt == $numnodes ];
+  then
+    break
+  fi
+
+  cnt=$((cnt+1))
+done
