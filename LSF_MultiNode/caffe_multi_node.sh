@@ -1,7 +1,7 @@
 #!/bin/sh
 
 numprocs=4
-CAFFE_WORK_DIR=/home/wangwei3/shared/intelcaffe/
+CAFFE_WORK_DIR=/tmp/caffe/
 arch_=knl
 topo=googlenet
 
@@ -13,17 +13,17 @@ xeonbin="${CAFFE_WORK_DIR}/build/tools/caffe train"
 nodenames=( `cat $PBS_NODEFILE | sort | uniq ` )
 
 numservers=4
-listep=6,7,8,9,10,11,12,13
+listep=6,7,8,9
 export MLSL_SERVER_AFFINITY="${listep}"
 
 threadspercore=1
 ppncpu=1
 
-cores=`lscpu | grep "Core(s) per socket:" | awk '{print $4}'`
-sockets=`lscpu | grep "Socket(s)" | awk  '{print $2}'`
-maxcores=$((cores*sockets))
+cores=72
+sockets=1
+maxcores=72
 
-numthreads=$(((maxcores-numservers)*threadspercore))
+numthreads=68
 
 # MLSL configuration
 export MLSL_LOG_LEVEL=0
@@ -46,7 +46,7 @@ export I_MPI_PIN_DOMAIN=node
 export I_MPI_DEBUG=6
 
 # OMP configuration
-affinitystr="proclist=[0-5,$((5+numservers+1))-$((maxcores-1))],granularity=thread,explicit"
+affinitystr="proclist=[0-5,10-71],granularity=thread,explicit"
 
 echo THREAD SETTINGS: Affinity $affinitystr Threads $numthreads Placement $KMP_PLACE_THREADS
 
@@ -55,8 +55,8 @@ echo THREAD SETTINGS: Affinity $affinitystr Threads $numthreads Placement $KMP_P
 
 rm -f $cfile
 node_id=1
-max_ppn=$((numprocs/numnodes))
-numthreads_per_proc=$((numthreads/max_ppn))
+max_ppn=1
+numthreads_per_proc=68
 echo numthreads_proc $numthreads_per_proc max_ppn $max_ppn
 
 log_file=outputCluster-${topo}-${arch_}-${numnodes}.txt
@@ -69,8 +69,8 @@ done
 
 #./build/tools/caffe train -solver models/intel_optimized_models/alexnet/solver.prototxt  -engine MKL2017
 source ~/.bashrc
-export CAFFE_ROOT=/home/wangwei3/shared/intelcaffe/
-export LD_LIBRARY_PATH=/home/wangwei3/intelcaffe/external/mkldnn/install/lib:$LD_LIBRARY_PATH
-cd /home/wangwei3/shared/intelcaffe
-source /home/wangwei3/shared/intel/mlsl_2017.0.014/intel64/bin/mlslvars.sh
+export CAFFE_ROOT=/tmp/intelcaffe/
+export LD_LIBRARY_PATH=/tmp/intelcaffe/external/mkldnn/install/lib:$LD_LIBRARY_PATH
+cd /tmp/intelcaffe
+source /opt/intel/mlsl_2017.0.014/intel64/bin/mlslvars.sh
 time GLOG_minloglevel=0 mpiexec.hydra -l -configfile $cfile 2>&1 |tee outputCluster.txt
