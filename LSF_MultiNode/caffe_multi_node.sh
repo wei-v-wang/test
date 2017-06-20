@@ -64,7 +64,7 @@ lmdb_dirs=(ilsvrc12_train_lmdb ilsvrc12_val_lmdb)
 
 for node in "${nodenames[@]}"
 do
-	echo "-host ${node} -genv OMP_NUM_THREADS ${numthreads_per_proc} -n $max_ppn numactl --preferred=0 $xeonbin --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017" >> $cfile
+	echo "-host ${node} -genv OMP_NUM_THREADS ${numthreads_per_proc} -n $max_ppn numactl --preferred=1 $xeonbin --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017" >> $cfile
 done 
 
 #./build/tools/caffe train -solver models/intel_optimized_models/alexnet/solver.prototxt  -engine MKL2017
