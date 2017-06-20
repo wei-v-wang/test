@@ -1,10 +1,4 @@
-Multi-node: 
-
-mpirun -ppn 1 -n 4 -f mpi_hosts ./build/tools/caffe train -solver examples/cifar10/cifar10_quick_solver.prototxt    -engine MKL2017
-
-mpirun -n 4 -ppn 1 -f mpi_hosts numactl -p 1 build/tools/caffe time -model models/convnet-benchmarks/imagenet_winners_2/2.prototxt -iterations 10 -engine=MKL2017
-
-(With imagenet)
+#Multi-node: (With imagenet)
 mpirun -ppn 1 -n 4    -f mpi_hosts    -env OMP_NUM_THREADS 64    -env KMP_AFFINITY granularity=fine,compact,1,0    numactl -p 1      ./build/tools/caffe train      -solver models/intel_optimized_models/multinode/googlenet_4nodes/solver.prototxt      -engine MKL2017
 
 Inference: 
@@ -30,10 +24,4 @@ mpiexec.hydra -v -PSM2 -l -n $n -ppn 1 -f $hostfile \
 
 
 Single Node (with Imagenet)
-
-./build/tools/caffe train -solver models/intel_optimized_models/alexnet/solver.prototxt  -engine MKL2017
-
-=====================================================================================================
-{{numactl -p 1 ./build/tools/caffe time -model models/intel_optimized_models/alexnet/train_val.prototxt  --iterations 10  -engine MKL2017 }}
-
-
+numactl -p 1 ./build/tools/caffe time -model models/intel_optimized_models/alexnet/train_val.prototxt  --iterations 10  -engine MKL2017 }}

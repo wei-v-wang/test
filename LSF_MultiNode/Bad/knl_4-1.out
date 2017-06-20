@@ -1,0 +1,1629 @@
+Sender: LSF System <marigapu@ekf215>
+Subject: Job 611734: <knl4-1> in cluster <endeavour> Exited
+
+Job <knl4-1> was submitted from host <eln6> by user <wangwei3> in cluster <endeavour>.
+Job was executed on host(s) <1*ekf215>, in queue <inteldevq>, as user <wangwei3> in cluster <endeavour>.
+                            <1*ekf039>
+                            <1*ekf250>
+                            <1*ekf062>
+</home/wangwei3> was used as the home directory.
+</home/wangwei3/shared> was used as the working directory.
+Started at Mon Jun 19 20:11:20 2017
+Results reported at Mon Jun 19 20:13:17 2017
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash ~/shared/caffe_multi_node.sh
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: Alarm clock.
+
+Resource usage summary:
+
+    CPU time :               25.23 sec.
+    Max Memory :             46 MB
+    Average Memory :         25.50 MB
+    Total Requested Memory : -
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Processes :          15
+    Max Threads :            19
+
+The output (if any) follows:
+
+GENERAL: INFO Mon Jun 19 20:11:23 2017
+GENERAL: INFO Starting prologue, please be patient
+GENERAL: INFO Resource_List_EIST=0
+
+HOST_NAME               status  r15s   r1m  r15m   ut    pg    io  ls    it   tmp   swp   mem r1mraw
+ebwnv01                     ok   0.0   0.0   0.0   0%   0.0     0   0   404  619G    8G122.6G      -
+GENERAL: INFO node list       : ekf039 ekf062 ekf215 ekf250
+GENERAL: INFO number of nodes : 4
+starting configBIOS
+ekf215 
++ prologue=1
++ Resource_List_KNL_MEMMODE=
++ Resource_List_KNL_CLUSTERMODE=
++ Resource_List_SPECIAL_KERNEL=
++ LSB_QUEUE=inteldevq
++ REBOOT=no
+++ hostname
++ HOSTNAME=ekf215
++ RECONFALLOWED=no
++ lshosts ekf215
++ grep -q reconfig
++ RECONFALLOWED=yes
++ echo inteldevq
++ grep -q spl
++ test yes = yes
++ /var/lib/icsmoke3/scripts/04.checkbios ekf215
+----------------
+ekf215
+----------------
+BIOS Version:  	 S72C610.86B.01.01.0190.080520162104     
+BIOS Release Date:  	 08/05/2016    
+
+----------------
+ekf215
+----------------
+System Version:  	 E63448-400     
+
+----------------
+ekf215
+----------------
+Processor Version:  	 Intel(R) Xeon Phi(TM) CPU 7250F @
+
+----------------
+ekf215
+----------------
+IPMI Specification Version:  	 2.0    
+
+----------------
+ekf215
+----------------
+Base Version:  	 E63448-400     
+
+----------------
+ekf215
+----------------
+   Boot Code:......... 00.07
+Error :  Reserved Error (Error Code: 1111)
+ME Firmware Version:.. 03.01.03.018
+   Op Code:........... 0.12.9511
+SDR Version:.......... SDR Package 1.14
+----------------
+ekf215
+----------------
+
+created /var/lib/icsmoke3/current/dmidecode.log
+Dumping BIOS settings via sysconfig:
+
+----------------
+ekf215
+----------------
+
+Saving file /var/lib/icsmoke3/current/syscfg.INI in progress...
+
+Successfully Completed
++ service ipmi start
+Redirecting to /bin/systemctl start  ipmi.service
++ ICSMOKE=/var/lib/icsmoke3
++ FILE=/var/lib/icsmoke3/etc/config.sh
+++ hostname
+++ sed -e 's,[0-9],,g'
++ PLATFORM=ekf
++ test -e /var/lib/icsmoke3/etc/config.ekf
++ FILE=/var/lib/icsmoke3/etc/config.ekf
+++ grep SYSCFGDIR /var/lib/icsmoke3/etc/config.ekf
++ eval SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
+++ SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
++ SYSCFG=/admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg
++ cd /var/lib/icsmoke3
++ egrep 'Cluster Mode|Memory Mode' current/syscfg.INI
+Cluster Mode=Quadrant                              ;Options: All2All=00: SNC-2=01: SNC-4=02: Hemisphere=03: Quadrant=04: Auto=05
+Memory Mode=Flat                                   ;Options: Cache=00: Flat=01: Hybrid=02: Auto=03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
+++ sed -e s,:,-,g /sys/class/net/eth0/address
++ ADDR=01-a4-bf-01-0f-24-73
++ ADDRFILE=/admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-24-73
++ '[' -e /admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-24-73 ']'
++ '[' 1 '!=' 1 ']'
++ case "$Resource_List_KNL_MEMMODE" in
++ case "$Resource_List_KNL_CLUSTERMODE" in
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
++ '[' -n '' ']'
++ test no = yes
++ lsof /admin
++ test no = yes
+REBOOT=no
++ echo REBOOT=no
+ekf062 
++ prologue=1
++ Resource_List_KNL_MEMMODE=
++ Resource_List_KNL_CLUSTERMODE=
++ Resource_List_SPECIAL_KERNEL=
++ LSB_QUEUE=inteldevq
++ REBOOT=no
+++ hostname
++ HOSTNAME=ekf062
++ RECONFALLOWED=no
++ lshosts ekf062
++ grep -q reconfig
++ RECONFALLOWED=yes
++ echo inteldevq
++ grep -q spl
++ test yes = yes
++ /var/lib/icsmoke3/scripts/04.checkbios ekf062
+----------------
+ekf062
+----------------
+BIOS Version:  	 S72C610.86B.01.01.0190.080520162104     
+BIOS Release Date:  	 08/05/2016    
+
+----------------
+ekf062
+----------------
+System Version:  	 E63448-400     
+
+----------------
+ekf062
+----------------
+Processor Version:  	 Intel(R) Xeon Phi(TM) CPU 7250F @
+
+----------------
+ekf062
+----------------
+IPMI Specification Version:  	 2.0    
+
+----------------
+ekf062
+----------------
+Base Version:  	 E63448-400     
+
+----------------
+ekf062
+----------------
+   Boot Code:......... 00.07
+Error :  Reserved Error (Error Code: 1111)
+ME Firmware Version:.. 03.01.03.018
+   Op Code:........... 0.12.9511
+SDR Version:.......... SDR Package 1.14
+----------------
+ekf062
+----------------
+
+created /var/lib/icsmoke3/current/dmidecode.log
+Dumping BIOS settings via sysconfig:
+
+----------------
+ekf062
+----------------
+
+Saving file /var/lib/icsmoke3/current/syscfg.INI in progress...
+
+Successfully Completed
++ service ipmi start
+Redirecting to /bin/systemctl start  ipmi.service
++ ICSMOKE=/var/lib/icsmoke3
++ FILE=/var/lib/icsmoke3/etc/config.sh
+++ hostname
+++ sed -e 's,[0-9],,g'
++ PLATFORM=ekf
++ test -e /var/lib/icsmoke3/etc/config.ekf
++ FILE=/var/lib/icsmoke3/etc/config.ekf
+++ grep SYSCFGDIR /var/lib/icsmoke3/etc/config.ekf
++ eval SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
+++ SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
++ SYSCFG=/admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg
++ cd /var/lib/icsmoke3
++ egrep 'Cluster Mode|Memory Mode' current/syscfg.INI
+Cluster Mode=Quadrant                              ;Options: All2All=00: SNC-2=01: SNC-4=02: Hemisphere=03: Quadrant=04: Auto=05
+Memory Mode=Flat                                   ;Options: Cache=00: Flat=01: Hybrid=02: Auto=03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
+++ sed -e s,:,-,g /sys/class/net/eth0/address
++ ADDR=01-a4-bf-01-0f-2d-97
++ ADDRFILE=/admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-2d-97
++ '[' -e /admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-2d-97 ']'
++ '[' 1 '!=' 1 ']'
++ case "$Resource_List_KNL_MEMMODE" in
++ case "$Resource_List_KNL_CLUSTERMODE" in
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
++ '[' -n '' ']'
++ test no = yes
++ lsof /admin
+REBOOT=no
++ test no = yes
++ echo REBOOT=no
+ekf250 
++ prologue=1
++ Resource_List_KNL_MEMMODE=
++ Resource_List_KNL_CLUSTERMODE=
++ Resource_List_SPECIAL_KERNEL=
++ LSB_QUEUE=inteldevq
++ REBOOT=no
+++ hostname
++ HOSTNAME=ekf250
++ RECONFALLOWED=no
++ lshosts ekf250
++ grep -q reconfig
++ RECONFALLOWED=yes
++ echo inteldevq
++ grep -q spl
++ test yes = yes
++ /var/lib/icsmoke3/scripts/04.checkbios ekf250
+----------------
+ekf250
+----------------
+BIOS Version:  	 S72C610.86B.01.01.0190.080520162104     
+BIOS Release Date:  	 08/05/2016    
+
+----------------
+ekf250
+----------------
+System Version:  	 E63448-400     
+
+----------------
+ekf250
+----------------
+Processor Version:  	 Intel(R) Xeon Phi(TM) CPU 7250F @
+
+----------------
+ekf250
+----------------
+IPMI Specification Version:  	 2.0    
+
+----------------
+ekf250
+----------------
+Base Version:  	 E63448-400     
+
+----------------
+ekf250
+----------------
+   Boot Code:......... 00.07
+Error :  Reserved Error (Error Code: 1111)
+ME Firmware Version:.. 03.01.03.018
+   Op Code:........... 0.12.9511
+SDR Version:.......... SDR Package 1.14
+----------------
+ekf250
+----------------
+
+created /var/lib/icsmoke3/current/dmidecode.log
+Dumping BIOS settings via sysconfig:
+
+----------------
+ekf250
+----------------
+
+Saving file /var/lib/icsmoke3/current/syscfg.INI in progress...
+
+Successfully Completed
++ service ipmi start
+Redirecting to /bin/systemctl start  ipmi.service
++ ICSMOKE=/var/lib/icsmoke3
++ FILE=/var/lib/icsmoke3/etc/config.sh
+++ hostname
+++ sed -e 's,[0-9],,g'
++ PLATFORM=ekf
++ test -e /var/lib/icsmoke3/etc/config.ekf
++ FILE=/var/lib/icsmoke3/etc/config.ekf
+++ grep SYSCFGDIR /var/lib/icsmoke3/etc/config.ekf
++ eval SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
+++ SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
++ SYSCFG=/admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg
++ cd /var/lib/icsmoke3
++ egrep 'Cluster Mode|Memory Mode' current/syscfg.INI
+Cluster Mode=Quadrant                              ;Options: All2All=00: SNC-2=01: SNC-4=02: Hemisphere=03: Quadrant=04: Auto=05
+Memory Mode=Flat                                   ;Options: Cache=00: Flat=01: Hybrid=02: Auto=03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
+++ sed -e s,:,-,g /sys/class/net/eth0/address
++ ADDR=01-a4-bf-01-0f-18-bb
++ ADDRFILE=/admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-18-bb
++ '[' -e /admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-18-bb ']'
++ '[' 1 '!=' 1 ']'
++ case "$Resource_List_KNL_MEMMODE" in
++ case "$Resource_List_KNL_CLUSTERMODE" in
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
++ '[' -n '' ']'
++ test no = yes
++ lsof /admin
+REBOOT=no
++ test no = yes
++ echo REBOOT=no
+ekf039 
++ prologue=1
++ Resource_List_KNL_MEMMODE=
++ Resource_List_KNL_CLUSTERMODE=
++ Resource_List_SPECIAL_KERNEL=
++ LSB_QUEUE=inteldevq
++ REBOOT=no
+++ hostname
++ HOSTNAME=ekf039
++ RECONFALLOWED=no
++ lshosts ekf039
++ grep -q reconfig
++ RECONFALLOWED=yes
++ echo inteldevq
++ grep -q spl
++ test yes = yes
++ /var/lib/icsmoke3/scripts/04.checkbios ekf039
+----------------
+ekf039
+----------------
+BIOS Version:  	 S72C610.86B.01.01.0190.080520162104     
+BIOS Release Date:  	 08/05/2016    
+
+----------------
+ekf039
+----------------
+System Version:  	 E63448-400     
+
+----------------
+ekf039
+----------------
+Processor Version:  	 Intel(R) Xeon Phi(TM) CPU 7250F @
+
+----------------
+ekf039
+----------------
+IPMI Specification Version:  	 2.0    
+
+----------------
+ekf039
+----------------
+Base Version:  	 E63448-400     
+
+----------------
+ekf039
+----------------
+   Boot Code:......... 00.07
+Error :  Reserved Error (Error Code: 1111)
+ME Firmware Version:.. 03.01.03.018
+   Op Code:........... 0.12.9511
+SDR Version:.......... SDR Package 1.14
+----------------
+ekf039
+----------------
+
+created /var/lib/icsmoke3/current/dmidecode.log
+Dumping BIOS settings via sysconfig:
+
+----------------
+ekf039
+----------------
+
+Saving file /var/lib/icsmoke3/current/syscfg.INI in progress...
+
+Successfully Completed
++ service ipmi start
+Redirecting to /bin/systemctl start  ipmi.service
++ ICSMOKE=/var/lib/icsmoke3
++ FILE=/var/lib/icsmoke3/etc/config.sh
+++ hostname
+++ sed -e 's,[0-9],,g'
++ PLATFORM=ekf
++ test -e /var/lib/icsmoke3/etc/config.ekf
++ FILE=/var/lib/icsmoke3/etc/config.ekf
+++ grep SYSCFGDIR /var/lib/icsmoke3/etc/config.ekf
++ eval SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
+++ SYSCFGDIR=/admin/hardware/intel/syscfg.v14.0.CRB.b3
++ SYSCFG=/admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg
++ cd /var/lib/icsmoke3
++ egrep 'Cluster Mode|Memory Mode' current/syscfg.INI
+Cluster Mode=Quadrant                              ;Options: All2All=00: SNC-2=01: SNC-4=02: Hemisphere=03: Quadrant=04: Auto=05
+Memory Mode=Flat                                   ;Options: Cache=00: Flat=01: Hybrid=02: Auto=03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
+++ sed -e s,:,-,g /sys/class/net/eth0/address
++ ADDR=01-a4-bf-01-0f-18-a7
++ ADDRFILE=/admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-18-a7
++ '[' -e /admin/tftpboot/3.0/pxelinux/pxelinux.cfg/01-a4-bf-01-0f-18-a7 ']'
++ '[' 1 '!=' 1 ']'
++ case "$Resource_List_KNL_MEMMODE" in
++ case "$Resource_List_KNL_CLUSTERMODE" in
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Memory Mode'
+
+Memory Mode
+===========
+Current Value : Flat
+--------------------
+Possible Values
+---------------
+Cache : 00
+Flat : 01
+Hybrid : 02
+Auto : 03
++ /admin/hardware/intel/syscfg.v14.0.CRB.b3/syscfg /d BIOSSETTINGS 'Cluster Mode'
+
+Cluster Mode
+============
+Current Value : Quadrant
+------------------------
+Possible Values
+---------------
+All2All : 00
+SNC-2 : 01
+SNC-4 : 02
+Hemisphere : 03
+Quadrant : 04
+Auto : 05
++ '[' -n '' ']'
++ test no = yes
++ lsof /admin
+REBOOT=no
++ test no = yes
++ echo REBOOT=no
+rebooting nodes: []
+GENERAL DEBUG excuting on all nodes: Resource_List_EIST=0 JOBID=611734 prologue=1 SHORTPBSSCRIPT=prologue LD_LIBRARY_PATH=/opt/lsf/9.1/linux2.6-glibc2.3-x86_64/lib: PATH=/opt/lsf/9.1/linux2.6-glibc2.3-x86_64/etc:/opt/lsf/9.1/linux2.6-glibc2.3-x86_64/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin LSB_QUEUE=inteldevq LSFUSER=wangwei3 LSB_JOBID=611734 LS_EXEC_T=START /opt/lsf/crtdc/XXXlogue.lsf.py CLIENT
+ekf039 set_all_cpus       0.0 0   0 11.0229589939
+ekf039 nologin            1.0 0  0 11.0229589939
+ekf039 + NEWGROUP=nologin:x:6009: 0 11.0229589939
+ekf039 ++ grep crt-dc /etc/group 0 11.0229589939
+ekf039 ++ sed -e 's,^crt-dc:.*:,,' 0 11.0229589939
+ekf039 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes 0 11.0229589939
+ekf039 + '[' -n 1 ']' 0 11.0229589939
+ekf039 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.0229589939
+ekf039 + sed -i -e '/^nologin:.*$/d' /etc/group 0 11.0229589939
+ekf039 + echo nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.0229589939
+ekf039 + grep '^nologin' /etc/group 0 11.0229589939
+ekf039 nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.0229589939
+ekf039 + sed -i -e '/^.*sed.*\/etc\/group.*nologin.*$/d' /root/setup.sh 0 11.0229589939
+ekf039 + echo 'sed -i /etc/group -e '\''s|^nologin:.*|nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3|'\''' 0 11.0229589939
+ekf039 + chmod 666 '/dev/nvidia*' 0 11.0229589939
+ekf039 + exit 0  0 11.0229589939
+ekf039 clean_turbostat    1.0 0   0 11.0229589939
+ekf039 check_userid       1.0 0  0 11.0229589939
+ekf039 uid=23039(wangwei3) gid=23039(wangwei3) groups=23039(wangwei3),6051(tceml)  0 11.0229589939
+ekf039 set_watchdog       1.0 0   0 11.0229589939
+ekf039 cpufreq            1.0 0   0 11.0229589939
+ekf039 before cpuonoff memkind            1.0 0  0 11.0229589939
+ekf039 1  0 11.0229589939
+ekf039 clean_dev_shm      1.0 0   0 11.0229589939
+ekf039 getmeminfo         1.1 0   0 11.0229589939
+ekf039 set_performance    1.2 0   0 11.0229589939
+ekf039 set_nm_and_chassis    2.0 0  0 11.0229589939
+ekf039 Redirecting to /bin/systemctl start  ipmi.service 0 11.0229589939
+ekf039  57 01 00 0 11.0229589939
+ekf039 Chassis identify interval: indefinite  0 11.0229589939
+ekf039 CPUonline : 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 0 11.0229589939
+ekf039 set_encfs          0.2 0   0 11.0229589939
+ekf039 set_mic            0.2 0  0 11.0229589939
+ekf039 + /sbin/lspci -n 0 11.0229589939
+ekf039 + grep -q -w '8086:226[0]' 0 11.0229589939
+ekf039 + echo 'no Co-processor found, exiting' 0 11.0229589939
+ekf039 no Co-processor found, exiting 0 11.0229589939
+ekf039 + exit 0  0 11.0229589939
+ekf039 check_ntpd         0.3 0   0 11.0229589939
+ekf039 check_swap         1.0 0  0 11.0229589939
+ekf039 + test '' = 1 0 11.0229589939
+ekf039 + exit 0  0 11.0229589939
+ekf039 clean_sep_files    1.0 0   0 11.0229589939
+ekf039 check_tmp_space    1.0 0   0 11.0229589939
+ekf039 hugepages          1.0 0   0 11.0229589939
+ekf039 set_irqbalance     1.0 0   0 11.0229589939
+ekf039 set_nvidia         1.0 0  0 11.0229589939
+ekf039 no nvidia card found; exiting  0 11.0229589939
+ekf039 set_thp            1.0 0   0 11.0229589939
+ekf039 set_truescale      1.0 0   0 11.0229589939
+ekf039 read_mce           1.0 0   0 11.0229589939
+ekf039 manage_lim         1.0 0  0 11.0229589939
+ekf039 Shut down LIM on <ekf039> ...... done  0 11.0229589939
+ekf039 config_ofed        4.0 0  0 11.0229589939
+ekf039 DEFAULT_IBSTACK=10.2.0.0.158_72                              # 0 11.0229589939
+ekf039 prologue=1                                                   # 0 11.0229589939
+ekf039 Resource_List_HFI1_eager_buffer_size=                        # 0 11.0229589939
+ekf039 Resource_List_HFI1_num_user_contexts=                        # 0 11.0229589939
+ekf039 Resource_List_HFI1_max_mtu=                                  # 0 11.0229589939
+ekf039 Resource_List_HFI1_cache_size=                               # 0 11.0229589939
+ekf039 Resource_List_IBSTACK=                                       # 0 11.0229589939
+ekf039 Resource_List_RESTART_IBSTACK=                               # 0 11.0229589939
+ekf039 found default IB stack: 10.2.0.0.158_72                      # 0 11.0229589939
+ekf039 restart check 1       : no                                   # 0 11.0229589939
+ekf039 want IB stack         : 10.2.0.0.158_72                      # 0 11.0229589939
+ekf039 have IB stack         : 10.2.0.0.158_72                      # 0 11.0229589939
+ekf039 tested want IB stack  : 10.2.0.0.158_72                      # 0 11.0229589939
+ekf039 + grep -q /etc/modprobe.d /proc/mounts 0 11.0229589939
+ekf039 + grep -q /etc/modprobe.d /proc/mounts 0 11.0229589939
+ekf039 + printf '%-60s # 0 11.0229589939
+ekf039 ' 'restart check 3.5     : no' 0 11.0229589939
+ekf039 restart check 3.5     : no                                   # 0 11.0229589939
+ekf039 + set +x 0 11.0229589939
+ekf039 restart check 2       : no                                   # 0 11.0229589939
+ekf039 compare module SRC ver                                       # 0 11.0229589939
+ekf039 restart check 3       : no                                   # 0 11.0229589939
+ekf039 restart check 4       : no to '10.2.0.0.158_72'              # 0 11.0229589939
+ekf039 ---------------- 0 11.0229589939
+ekf039 ekf039 0 11.0229589939
+ekf039 ---------------- 0 11.0229589939
+ekf039 Installed IB cards 0 11.0229589939
+ekf039 	CA type:  0 11.0229589939
+ekf039 		State: Active 0 11.0229589939
+ekf039 		Physical state: LinkUp 0 11.0229589939
+ekf039 	CA type:  0 11.0229589939
+ekf039 		State: Down 0 11.0229589939
+ekf039 		Physical state: ??? 0 11.0229589939
+ekf039 ---------------- 0 11.0229589939
+ekf039 ekf039 0 11.0229589939
+ekf039 ---------------- 0 11.0229589939
+ekf039  0 11.0229589939
+ekf039 IB interface NUMA value: 0 11.0229589939
+ekf039 lrwxrwxrwx 1 root root       11 Jun 19 19:41 /dev/hfi1 -> /dev/hfi1_0 0 11.0229589939
+ekf039 crw-rw-rw- 1 root root 244,   0 Jun 19 19:39 /dev/hfi1_0 0 11.0229589939
+ekf039 crw-rw-rw- 1 root root 244,   1 Jun 19 19:39 /dev/hfi1_1 0 11.0229589939
+ekf039 crw-rw-rw- 1 root root 244, 128 Jun 19 19:39 /dev/hfi1_diagpkt 0 11.0229589939
+ekf039 crw-rw-rw- 1 root root 244, 200 Jun 19 19:39 /dev/hfi1_diagpkt0 0 11.0229589939
+ekf039 crw-rw-rw- 1 root root 244, 201 Jun 19 19:39 /dev/hfi1_diagpkt1 0 11.0229589939
+ekf039 Type: FI Ports: 1 PortNum: 1 PartitionCap: 16 0 11.0229589939
+ekf039 NodeGuid: 0x0011758101794f99 PortGuid: 0x0011758101794f99 0 11.0229589939
+ekf039 SystemImageGuid: 0x0011758101794f99 0 11.0229589939
+ekf039 BaseVersion: 128 SmaVersion: 128 VendorID: 0x1175 DeviceId: 0x24f1 Revision: 0x11 0 11.0229589939
+ekf039 core file size          (blocks, -c) 0 0 11.0229589939
+ekf039 data seg size           (kbytes, -d) unlimited 0 11.0229589939
+ekf039 scheduling priority             (-e) 0 0 11.0229589939
+ekf039 file size               (blocks, -f) unlimited 0 11.0229589939
+ekf039 pending signals                 (-i) 450658 0 11.0229589939
+ekf039 max locked memory       (kbytes, -l) 113000000 0 11.0229589939
+ekf039 max memory size         (kbytes, -m) unlimited 0 11.0229589939
+ekf039 open files                      (-n) 10000 0 11.0229589939
+ekf039 pipe size            (512 bytes, -p) 8 0 11.0229589939
+ekf039 POSIX message queues     (bytes, -q) 819200 0 11.0229589939
+ekf039 real-time priority              (-r) 0 0 11.0229589939
+ekf039 stack size              (kbytes, -s) unlimited 0 11.0229589939
+ekf039 cpu time               (seconds, -t) unlimited 0 11.0229589939
+ekf039 max user processes              (-u) 16384 0 11.0229589939
+ekf039 virtual memory          (kbytes, -v) unlimited 0 11.0229589939
+ekf039 file locks                      (-x) unlimited 0 11.0229589939
+ekf039 ERRORS=                                                      #  0 11.0229589939
+ekf039 config_lustre      0.0 0   0 11.0229589939
+ekf039 check_mounts       1.0 0  0 11.0229589939
+ekf039 + test -e /var/lock/mounts 0 11.0229589939
+ekf039 + test -n '' 0 11.0229589939
+ekf039 + env -i LANG=en_US.UTF-8 /bin/egrep 'nfs|lustre' /proc/mounts 0 11.0229589939
+ekf039 + /usr/bin/awk '{print $1}' 0 11.0229589939
+ekf039 + /bin/grep -v -e lfs10 -e '/admin ' 0 11.0229589939
+ekf039 + LANG=en_US.UTF-8 0 11.0229589939
+ekf039 + /bin/sort 0 11.0229589939
+ekf039 + /bin/cut '-d ' -f 1 0 11.0229589939
+ekf039 + diff /var/lock/mounts_n /var/lock/mounts  0 11.0229589939
+ekf062 set_all_cpus       0.0 0   0 11.2416291237
+ekf062 set_performance    0.1 0   0 11.2416291237
+ekf062 nologin            1.0 0  0 11.2416291237
+ekf062 + NEWGROUP=nologin:x:6009: 0 11.2416291237
+ekf062 ++ grep crt-dc /etc/group 0 11.2416291237
+ekf062 ++ sed -e 's,^crt-dc:.*:,,' 0 11.2416291237
+ekf062 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes 0 11.2416291237
+ekf062 + '[' -n 1 ']' 0 11.2416291237
+ekf062 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.2416291237
+ekf062 + sed -i -e '/^nologin:.*$/d' /etc/group 0 11.2416291237
+ekf062 + echo nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.2416291237
+ekf062 + grep '^nologin' /etc/group 0 11.2416291237
+ekf062 nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 11.2416291237
+ekf062 + sed -i -e '/^.*sed.*\/etc\/group.*nologin.*$/d' /root/setup.sh 0 11.2416291237
+ekf062 + echo 'sed -i /etc/group -e '\''s|^nologin:.*|nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3|'\''' 0 11.2416291237
+ekf062 + chmod 666 '/dev/nvidia*' 0 11.2416291237
+ekf062 + exit 0  0 11.2416291237
+ekf062 check_userid       1.0 0  0 11.2416291237
+ekf062 uid=23039(wangwei3) gid=23039(wangwei3) groups=23039(wangwei3),6051(tceml)  0 11.2416291237
+ekf062 set_watchdog       1.0 0   0 11.2416291237
+ekf062 cpufreq            1.0 0   0 11.2416291237
+ekf062 set_nm_and_chassis    1.0 0  0 11.2416291237
+ekf062 Redirecting to /bin/systemctl start  ipmi.service 0 11.2416291237
+ekf062  57 01 00 0 11.2416291237
+ekf062 Chassis identify interval: indefinite  0 11.2416291237
+ekf062 memkind            1.0 0  0 11.2416291237
+ekf062 1  0 11.2416291237
+ekf062 clean_dev_shm      1.0 0   0 11.2416291237
+ekf062 clean_turbostat    1.1 0   0 11.2416291237
+ekf062 before cpuonoff getmeminfo         3.0 0   0 11.2416291237
+ekf062 CPUonline : 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 0 11.2416291237
+ekf062 clean_sep_files    0.1 0   0 11.2416291237
+ekf062 check_swap         1.0 0  0 11.2416291237
+ekf062 + test '' = 1 0 11.2416291237
+ekf062 + exit 0  0 11.2416291237
+ekf062 check_tmp_space    1.0 0   0 11.2416291237
+ekf062 hugepages          1.0 0   0 11.2416291237
+ekf062 check_ntpd         1.0 0   0 11.2416291237
+ekf062 set_encfs          1.0 0   0 11.2416291237
+ekf062 set_irqbalance     1.0 0   0 11.2416291237
+ekf062 set_nvidia         1.0 0  0 11.2416291237
+ekf062 no nvidia card found; exiting  0 11.2416291237
+ekf062 set_mic            1.0 0  0 11.2416291237
+ekf062 + /sbin/lspci -n 0 11.2416291237
+ekf062 + grep -q -w '8086:226[0]' 0 11.2416291237
+ekf062 + echo 'no Co-processor found, exiting' 0 11.2416291237
+ekf062 no Co-processor found, exiting 0 11.2416291237
+ekf062 + exit 0  0 11.2416291237
+ekf062 set_thp            1.0 0   0 11.2416291237
+ekf062 set_truescale      1.0 0   0 11.2416291237
+ekf062 read_mce           1.0 0   0 11.2416291237
+ekf062 manage_lim         1.0 0  0 11.2416291237
+ekf062 Shut down LIM on <ekf062> ...... done  0 11.2416291237
+ekf062 config_ofed        3.0 0  0 11.2416291237
+ekf062 DEFAULT_IBSTACK=10.2.0.0.158_72                              # 0 11.2416291237
+ekf062 prologue=1                                                   # 0 11.2416291237
+ekf062 Resource_List_HFI1_eager_buffer_size=                        # 0 11.2416291237
+ekf062 Resource_List_HFI1_num_user_contexts=                        # 0 11.2416291237
+ekf062 Resource_List_HFI1_max_mtu=                                  # 0 11.2416291237
+ekf062 Resource_List_HFI1_cache_size=                               # 0 11.2416291237
+ekf062 Resource_List_IBSTACK=                                       # 0 11.2416291237
+ekf062 Resource_List_RESTART_IBSTACK=                               # 0 11.2416291237
+ekf062 found default IB stack: 10.2.0.0.158_72                      # 0 11.2416291237
+ekf062 restart check 1       : no                                   # 0 11.2416291237
+ekf062 want IB stack         : 10.2.0.0.158_72                      # 0 11.2416291237
+ekf062 have IB stack         : 10.2.0.0.158_72                      # 0 11.2416291237
+ekf062 tested want IB stack  : 10.2.0.0.158_72                      # 0 11.2416291237
+ekf062 + grep -q /etc/modprobe.d /proc/mounts 0 11.2416291237
+ekf062 + grep -q /etc/modprobe.d /proc/mounts 0 11.2416291237
+ekf062 + printf '%-60s # 0 11.2416291237
+ekf062 ' 'restart check 3.5     : no' 0 11.2416291237
+ekf062 restart check 3.5     : no                                   # 0 11.2416291237
+ekf062 + set +x 0 11.2416291237
+ekf062 restart check 2       : no                                   # 0 11.2416291237
+ekf062 compare module SRC ver                                       # 0 11.2416291237
+ekf062 restart check 3       : no                                   # 0 11.2416291237
+ekf062 restart check 4       : no to '10.2.0.0.158_72'              # 0 11.2416291237
+ekf062 ---------------- 0 11.2416291237
+ekf062 ekf062 0 11.2416291237
+ekf062 ---------------- 0 11.2416291237
+ekf062 Installed IB cards 0 11.2416291237
+ekf062 	CA type:  0 11.2416291237
+ekf062 		State: Active 0 11.2416291237
+ekf062 		Physical state: LinkUp 0 11.2416291237
+ekf062 	CA type:  0 11.2416291237
+ekf062 		State: Down 0 11.2416291237
+ekf062 		Physical state: ??? 0 11.2416291237
+ekf062 ---------------- 0 11.2416291237
+ekf062 ekf062 0 11.2416291237
+ekf062 ---------------- 0 11.2416291237
+ekf062  0 11.2416291237
+ekf062 IB interface NUMA value: 0 11.2416291237
+ekf062 lrwxrwxrwx 1 root root       11 Jun 19 19:21 /dev/hfi1 -> /dev/hfi1_0 0 11.2416291237
+ekf062 crw-rw-rw- 1 root root 244,   0 Jun 19 19:21 /dev/hfi1_0 0 11.2416291237
+ekf062 crw-rw-rw- 1 root root 244,   1 Jun 19 19:21 /dev/hfi1_1 0 11.2416291237
+ekf062 crw-rw-rw- 1 root root 244, 128 Jun 19 19:21 /dev/hfi1_diagpkt 0 11.2416291237
+ekf062 crw-rw-rw- 1 root root 244, 200 Jun 19 19:21 /dev/hfi1_diagpkt0 0 11.2416291237
+ekf062 crw-rw-rw- 1 root root 244, 201 Jun 19 19:21 /dev/hfi1_diagpkt1 0 11.2416291237
+ekf062 Type: FI Ports: 1 PortNum: 1 PartitionCap: 16 0 11.2416291237
+ekf062 NodeGuid: 0x00117581017b7d00 PortGuid: 0x00117581017b7d00 0 11.2416291237
+ekf062 SystemImageGuid: 0x00117581017b7d00 0 11.2416291237
+ekf062 BaseVersion: 128 SmaVersion: 128 VendorID: 0x1175 DeviceId: 0x24f1 Revision: 0x11 0 11.2416291237
+ekf062 core file size          (blocks, -c) 0 0 11.2416291237
+ekf062 data seg size           (kbytes, -d) unlimited 0 11.2416291237
+ekf062 scheduling priority             (-e) 0 0 11.2416291237
+ekf062 file size               (blocks, -f) unlimited 0 11.2416291237
+ekf062 pending signals                 (-i) 450658 0 11.2416291237
+ekf062 max locked memory       (kbytes, -l) 113000000 0 11.2416291237
+ekf062 max memory size         (kbytes, -m) unlimited 0 11.2416291237
+ekf062 open files                      (-n) 10000 0 11.2416291237
+ekf062 pipe size            (512 bytes, -p) 8 0 11.2416291237
+ekf062 POSIX message queues     (bytes, -q) 819200 0 11.2416291237
+ekf062 real-time priority              (-r) 0 0 11.2416291237
+ekf062 stack size              (kbytes, -s) unlimited 0 11.2416291237
+ekf062 cpu time               (seconds, -t) unlimited 0 11.2416291237
+ekf062 max user processes              (-u) 16384 0 11.2416291237
+ekf062 virtual memory          (kbytes, -v) unlimited 0 11.2416291237
+ekf062 file locks                      (-x) unlimited 0 11.2416291237
+ekf062 ERRORS=                                                      #  0 11.2416291237
+ekf062 check_mounts       1.0 0  0 11.2416291237
+ekf062 + test -e /var/lock/mounts 0 11.2416291237
+ekf062 + test -n '' 0 11.2416291237
+ekf062 + env -i LANG=en_US.UTF-8 /bin/egrep 'nfs|lustre' /proc/mounts 0 11.2416291237
+ekf062 + /usr/bin/awk '{print $1}' 0 11.2416291237
+ekf062 + /bin/grep -v -e lfs10 -e '/admin ' 0 11.2416291237
+ekf062 + LANG=en_US.UTF-8 0 11.2416291237
+ekf062 + /bin/sort 0 11.2416291237
+ekf062 + /bin/cut '-d ' -f 1 0 11.2416291237
+ekf062 + diff /var/lock/mounts_n /var/lock/mounts  0 11.2416291237
+ekf062 config_lustre      1.0 0   0 11.2416291237
+ekf215 set_all_cpus       0.0 0   0 12.1849741936
+ekf215 set_watchdog       0.5 0   0 12.1849741936
+ekf215 cpufreq            0.5 0   0 12.1849741936
+ekf215 nologin            1.0 0  0 12.1849741936
+ekf215 + NEWGROUP=nologin:x:6009: 0 12.1849741936
+ekf215 ++ grep crt-dc /etc/group 0 12.1849741936
+ekf215 ++ sed -e 's,^crt-dc:.*:,,' 0 12.1849741936
+ekf215 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes 0 12.1849741936
+ekf215 + '[' -n 1 ']' 0 12.1849741936
+ekf215 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 12.1849741936
+ekf215 + sed -i -e '/^nologin:.*$/d' /etc/group 0 12.1849741936
+ekf215 + echo nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 12.1849741936
+ekf215 + grep '^nologin' /etc/group 0 12.1849741936
+ekf215 nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 12.1849741936
+ekf215 + sed -i -e '/^.*sed.*\/etc\/group.*nologin.*$/d' /root/setup.sh 0 12.1849741936
+ekf215 + echo 'sed -i /etc/group -e '\''s|^nologin:.*|nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3|'\''' 0 12.1849741936
+ekf215 + chmod 666 '/dev/nvidia*' 0 12.1849741936
+ekf215 + exit 0  0 12.1849741936
+ekf215 clean_turbostat    1.0 0   0 12.1849741936
+ekf215 check_userid       1.0 0  0 12.1849741936
+ekf215 uid=23039(wangwei3) gid=23039(wangwei3) groups=23039(wangwei3),6051(tceml)  0 12.1849741936
+ekf215 set_nm_and_chassis    1.0 0  0 12.1849741936
+ekf215 Redirecting to /bin/systemctl start  ipmi.service 0 12.1849741936
+ekf215  57 01 00 0 12.1849741936
+ekf215 Chassis identify interval: indefinite  0 12.1849741936
+ekf215 set_performance    1.0 0   0 12.1849741936
+ekf215 clean_dev_shm      1.0 0   0 12.1849741936
+ekf215 memkind            1.0 0  0 12.1849741936
+ekf215 1  0 12.1849741936
+ekf215 before cpuonoff getmeminfo         3.0 0   0 12.1849741936
+ekf215 CPUonline : 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 0 12.1849741936
+ekf215 check_swap         1.0 0  0 12.1849741936
+ekf215 + test '' = 1 0 12.1849741936
+ekf215 + exit 0  0 12.1849741936
+ekf215 clean_sep_files    1.0 0   0 12.1849741936
+ekf215 check_tmp_space    1.0 0   0 12.1849741936
+ekf215 hugepages          1.0 0   0 12.1849741936
+ekf215 set_irqbalance     1.0 0   0 12.1849741936
+ekf215 check_ntpd         1.0 0   0 12.1849741936
+ekf215 set_thp            1.0 0   0 12.1849741936
+ekf215 set_encfs          1.0 0   0 12.1849741936
+ekf215 set_mic            1.0 0  0 12.1849741936
+ekf215 + /sbin/lspci -n 0 12.1849741936
+ekf215 + grep -q -w '8086:226[0]' 0 12.1849741936
+ekf215 + echo 'no Co-processor found, exiting' 0 12.1849741936
+ekf215 no Co-processor found, exiting 0 12.1849741936
+ekf215 + exit 0  0 12.1849741936
+ekf215 set_nvidia         1.0 0  0 12.1849741936
+ekf215 no nvidia card found; exiting  0 12.1849741936
+ekf215 set_truescale      1.0 0   0 12.1849741936
+ekf215 read_mce           1.0 0   0 12.1849741936
+ekf215 manage_lim         1.0 0  0 12.1849741936
+ekf215 Shut down LIM on <ekf215> ...... done  0 12.1849741936
+ekf215 config_ofed        3.0 0  0 12.1849741936
+ekf215 DEFAULT_IBSTACK=10.2.0.0.158_72                              # 0 12.1849741936
+ekf215 prologue=1                                                   # 0 12.1849741936
+ekf215 Resource_List_HFI1_eager_buffer_size=                        # 0 12.1849741936
+ekf215 Resource_List_HFI1_num_user_contexts=                        # 0 12.1849741936
+ekf215 Resource_List_HFI1_max_mtu=                                  # 0 12.1849741936
+ekf215 Resource_List_HFI1_cache_size=                               # 0 12.1849741936
+ekf215 Resource_List_IBSTACK=                                       # 0 12.1849741936
+ekf215 Resource_List_RESTART_IBSTACK=                               # 0 12.1849741936
+ekf215 found default IB stack: 10.2.0.0.158_72                      # 0 12.1849741936
+ekf215 restart check 1       : no                                   # 0 12.1849741936
+ekf215 want IB stack         : 10.2.0.0.158_72                      # 0 12.1849741936
+ekf215 have IB stack         : 10.2.0.0.158_72                      # 0 12.1849741936
+ekf215 tested want IB stack  : 10.2.0.0.158_72                      # 0 12.1849741936
+ekf215 + grep -q /etc/modprobe.d /proc/mounts 0 12.1849741936
+ekf215 + grep -q /etc/modprobe.d /proc/mounts 0 12.1849741936
+ekf215 + printf '%-60s # 0 12.1849741936
+ekf215 ' 'restart check 3.5     : no' 0 12.1849741936
+ekf215 restart check 3.5     : no                                   # 0 12.1849741936
+ekf215 + set +x 0 12.1849741936
+ekf215 restart check 2       : no                                   # 0 12.1849741936
+ekf215 compare module SRC ver                                       # 0 12.1849741936
+ekf215 restart check 3       : no                                   # 0 12.1849741936
+ekf215 restart check 4       : no to '10.2.0.0.158_72'              # 0 12.1849741936
+ekf215 ---------------- 0 12.1849741936
+ekf215 ekf215 0 12.1849741936
+ekf215 ---------------- 0 12.1849741936
+ekf215 Installed IB cards 0 12.1849741936
+ekf215 	CA type:  0 12.1849741936
+ekf215 		State: Active 0 12.1849741936
+ekf215 		Physical state: LinkUp 0 12.1849741936
+ekf215 	CA type:  0 12.1849741936
+ekf215 		State: Down 0 12.1849741936
+ekf215 		Physical state: ??? 0 12.1849741936
+ekf215 ---------------- 0 12.1849741936
+ekf215 ekf215 0 12.1849741936
+ekf215 ---------------- 0 12.1849741936
+ekf215  0 12.1849741936
+ekf215 IB interface NUMA value: 0 12.1849741936
+ekf215 lrwxrwxrwx 1 root root       11 Jun 19 19:51 /dev/hfi1 -> /dev/hfi1_0 0 12.1849741936
+ekf215 crw-rw-rw- 1 root root 244,   0 Jun 19 19:51 /dev/hfi1_0 0 12.1849741936
+ekf215 crw-rw-rw- 1 root root 244,   1 Jun 19 19:51 /dev/hfi1_1 0 12.1849741936
+ekf215 crw-rw-rw- 1 root root 244, 128 Jun 19 19:51 /dev/hfi1_diagpkt 0 12.1849741936
+ekf215 crw-rw-rw- 1 root root 244, 200 Jun 19 19:51 /dev/hfi1_diagpkt0 0 12.1849741936
+ekf215 crw-rw-rw- 1 root root 244, 201 Jun 19 19:51 /dev/hfi1_diagpkt1 0 12.1849741936
+ekf215 Type: FI Ports: 1 PortNum: 1 PartitionCap: 16 0 12.1849741936
+ekf215 NodeGuid: 0x00117581017b4c62 PortGuid: 0x00117581017b4c62 0 12.1849741936
+ekf215 SystemImageGuid: 0x00117581017b4c62 0 12.1849741936
+ekf215 BaseVersion: 128 SmaVersion: 128 VendorID: 0x1175 DeviceId: 0x24f1 Revision: 0x11 0 12.1849741936
+ekf215 core file size          (blocks, -c) 0 0 12.1849741936
+ekf215 data seg size           (kbytes, -d) unlimited 0 12.1849741936
+ekf215 scheduling priority             (-e) 0 0 12.1849741936
+ekf215 file size               (blocks, -f) unlimited 0 12.1849741936
+ekf215 pending signals                 (-i) 450658 0 12.1849741936
+ekf215 max locked memory       (kbytes, -l) 113000000 0 12.1849741936
+ekf215 max memory size         (kbytes, -m) unlimited 0 12.1849741936
+ekf215 open files                      (-n) 10000 0 12.1849741936
+ekf215 pipe size            (512 bytes, -p) 8 0 12.1849741936
+ekf215 POSIX message queues     (bytes, -q) 819200 0 12.1849741936
+ekf215 real-time priority              (-r) 0 0 12.1849741936
+ekf215 stack size              (kbytes, -s) unlimited 0 12.1849741936
+ekf215 cpu time               (seconds, -t) unlimited 0 12.1849741936
+ekf215 max user processes              (-u) 16384 0 12.1849741936
+ekf215 virtual memory          (kbytes, -v) unlimited 0 12.1849741936
+ekf215 file locks                      (-x) unlimited 0 12.1849741936
+ekf215 ERRORS=                                                      #  0 12.1849741936
+ekf215 check_mounts       1.0 0  0 12.1849741936
+ekf215 + test -e /var/lock/mounts 0 12.1849741936
+ekf215 + test -n '' 0 12.1849741936
+ekf215 + env -i LANG=en_US.UTF-8 /bin/egrep 'nfs|lustre' /proc/mounts 0 12.1849741936
+ekf215 + /usr/bin/awk '{print $1}' 0 12.1849741936
+ekf215 + /bin/grep -v -e lfs10 -e '/admin ' 0 12.1849741936
+ekf215 + LANG=en_US.UTF-8 0 12.1849741936
+ekf215 + /bin/sort 0 12.1849741936
+ekf215 + /bin/cut '-d ' -f 1 0 12.1849741936
+ekf215 + diff /var/lock/mounts_n /var/lock/mounts  0 12.1849741936
+ekf215 config_lustre      1.0 0   0 12.1849741936
+ekf250 set_watchdog       0.1 0   0 14.0268981457
+ekf250 set_all_cpus       0.0 0   0 14.0268981457
+ekf250 clean_turbostat    1.0 0   0 14.0268981457
+ekf250 nologin            1.0 0  0 14.0268981457
+ekf250 + NEWGROUP=nologin:x:6009: 0 14.0268981457
+ekf250 ++ grep crt-dc /etc/group 0 14.0268981457
+ekf250 ++ sed -e 's,^crt-dc:.*:,,' 0 14.0268981457
+ekf250 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes 0 14.0268981457
+ekf250 + '[' -n 1 ']' 0 14.0268981457
+ekf250 + NEWGROUP=nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 14.0268981457
+ekf250 + sed -i -e '/^nologin:.*$/d' /etc/group 0 14.0268981457
+ekf250 + echo nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 14.0268981457
+ekf250 + grep '^nologin' /etc/group 0 14.0268981457
+ekf250 nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3 0 14.0268981457
+ekf250 + sed -i -e '/^.*sed.*\/etc\/group.*nologin.*$/d' /root/setup.sh 0 14.0268981457
+ekf250 + echo 'sed -i /etc/group -e '\''s|^nologin:.*|nologin:x:6009:djmeyer,mhebenst,skhvosto,marigapu,rasandov,rdahring,tgeerdes,wangwei3|'\''' 0 14.0268981457
+ekf250 + chmod 666 '/dev/nvidia*' 0 14.0268981457
+ekf250 + exit 0  0 14.0268981457
+ekf250 cpufreq            1.0 0   0 14.0268981457
+ekf250 check_userid       1.0 0  0 14.0268981457
+ekf250 uid=23039(wangwei3) gid=23039(wangwei3) groups=23039(wangwei3),6051(tceml)  0 14.0268981457
+ekf250 set_performance    1.0 0   0 14.0268981457
+ekf250 memkind            1.0 0  0 14.0268981457
+ekf250 1  0 14.0268981457
+ekf250 clean_dev_shm      1.0 0   0 14.0268981457
+ekf250 before cpuonoff getmeminfo         3.0 0   0 14.0268981457
+ekf250 set_nm_and_chassis    3.0 0  0 14.0268981457
+ekf250 Redirecting to /bin/systemctl start  ipmi.service 0 14.0268981457
+ekf250  57 01 00 0 14.0268981457
+ekf250 Chassis identify interval: indefinite  0 14.0268981457
+ekf250 clean_sep_files    0.0 0   0 14.0268981457
+ekf250 CPUonline : 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 0 14.0268981457
+ekf250 set_mic            0.3 0  0 14.0268981457
+ekf250 + /sbin/lspci -n 0 14.0268981457
+ekf250 + grep -q -w '8086:226[0]' 0 14.0268981457
+ekf250 + echo 'no Co-processor found, exiting' 0 14.0268981457
+ekf250 no Co-processor found, exiting 0 14.0268981457
+ekf250 + exit 0  0 14.0268981457
+ekf250 check_swap         1.0 0  0 14.0268981457
+ekf250 + test '' = 1 0 14.0268981457
+ekf250 + exit 0  0 14.0268981457
+ekf250 check_tmp_space    1.0 0   0 14.0268981457
+ekf250 hugepages          1.0 0   0 14.0268981457
+ekf250 set_irqbalance     1.0 0   0 14.0268981457
+ekf250 check_ntpd         1.0 0   0 14.0268981457
+ekf250 set_nvidia         1.0 0  0 14.0268981457
+ekf250 no nvidia card found; exiting  0 14.0268981457
+ekf250 set_encfs          1.0 0   0 14.0268981457
+ekf250 set_thp            1.0 0   0 14.0268981457
+ekf250 set_truescale      1.0 0   0 14.0268981457
+ekf250 read_mce           1.0 0   0 14.0268981457
+ekf250 manage_lim         1.0 0  0 14.0268981457
+ekf250 Shut down LIM on <ekf250> ...... done  0 14.0268981457
+ekf250 config_ofed        4.0 0  0 14.0268981457
+ekf250 DEFAULT_IBSTACK=10.2.0.0.158_72                              # 0 14.0268981457
+ekf250 prologue=1                                                   # 0 14.0268981457
+ekf250 Resource_List_HFI1_eager_buffer_size=                        # 0 14.0268981457
+ekf250 Resource_List_HFI1_num_user_contexts=                        # 0 14.0268981457
+ekf250 Resource_List_HFI1_max_mtu=                                  # 0 14.0268981457
+ekf250 Resource_List_HFI1_cache_size=                               # 0 14.0268981457
+ekf250 Resource_List_IBSTACK=                                       # 0 14.0268981457
+ekf250 Resource_List_RESTART_IBSTACK=                               # 0 14.0268981457
+ekf250 found default IB stack: 10.2.0.0.158_72                      # 0 14.0268981457
+ekf250 restart check 1       : no                                   # 0 14.0268981457
+ekf250 want IB stack         : 10.2.0.0.158_72                      # 0 14.0268981457
+ekf250 have IB stack         : 10.2.0.0.158_72                      # 0 14.0268981457
+ekf250 tested want IB stack  : 10.2.0.0.158_72                      # 0 14.0268981457
+ekf250 + grep -q /etc/modprobe.d /proc/mounts 0 14.0268981457
+ekf250 + grep -q /etc/modprobe.d /proc/mounts 0 14.0268981457
+ekf250 + printf '%-60s # 0 14.0268981457
+ekf250 ' 'restart check 3.5     : no' 0 14.0268981457
+ekf250 restart check 3.5     : no                                   # 0 14.0268981457
+ekf250 + set +x 0 14.0268981457
+ekf250 restart check 2       : no                                   # 0 14.0268981457
+ekf250 compare module SRC ver                                       # 0 14.0268981457
+ekf250 restart check 3       : no                                   # 0 14.0268981457
+ekf250 restart check 4       : no to '10.2.0.0.158_72'              # 0 14.0268981457
+ekf250 ---------------- 0 14.0268981457
+ekf250 ekf250 0 14.0268981457
+ekf250 ---------------- 0 14.0268981457
+ekf250 Installed IB cards 0 14.0268981457
+ekf250 	CA type:  0 14.0268981457
+ekf250 		State: Active 0 14.0268981457
+ekf250 		Physical state: LinkUp 0 14.0268981457
+ekf250 	CA type:  0 14.0268981457
+ekf250 		State: Down 0 14.0268981457
+ekf250 		Physical state: ??? 0 14.0268981457
+ekf250 ---------------- 0 14.0268981457
+ekf250 ekf250 0 14.0268981457
+ekf250 ---------------- 0 14.0268981457
+ekf250  0 14.0268981457
+ekf250 IB interface NUMA value: 0 14.0268981457
+ekf250 lrwxrwxrwx 1 root root       11 Jun 19 19:58 /dev/hfi1 -> /dev/hfi1_0 0 14.0268981457
+ekf250 crw-rw-rw- 1 root root 244,   0 Jun 19 19:58 /dev/hfi1_0 0 14.0268981457
+ekf250 crw-rw-rw- 1 root root 244,   1 Jun 19 19:58 /dev/hfi1_1 0 14.0268981457
+ekf250 crw-rw-rw- 1 root root 244, 128 Jun 19 19:58 /dev/hfi1_diagpkt 0 14.0268981457
+ekf250 crw-rw-rw- 1 root root 244, 200 Jun 19 19:58 /dev/hfi1_diagpkt0 0 14.0268981457
+ekf250 crw-rw-rw- 1 root root 244, 201 Jun 19 19:58 /dev/hfi1_diagpkt1 0 14.0268981457
+ekf250 Type: FI Ports: 1 PortNum: 1 PartitionCap: 16 0 14.0268981457
+ekf250 NodeGuid: 0x001175810179216f PortGuid: 0x001175810179216f 0 14.0268981457
+ekf250 SystemImageGuid: 0x001175810179216f 0 14.0268981457
+ekf250 BaseVersion: 128 SmaVersion: 128 VendorID: 0x1175 DeviceId: 0x24f1 Revision: 0x11 0 14.0268981457
+ekf250 core file size          (blocks, -c) 0 0 14.0268981457
+ekf250 data seg size           (kbytes, -d) unlimited 0 14.0268981457
+ekf250 scheduling priority             (-e) 0 0 14.0268981457
+ekf250 file size               (blocks, -f) unlimited 0 14.0268981457
+ekf250 pending signals                 (-i) 450658 0 14.0268981457
+ekf250 max locked memory       (kbytes, -l) 113000000 0 14.0268981457
+ekf250 max memory size         (kbytes, -m) unlimited 0 14.0268981457
+ekf250 open files                      (-n) 10000 0 14.0268981457
+ekf250 pipe size            (512 bytes, -p) 8 0 14.0268981457
+ekf250 POSIX message queues     (bytes, -q) 819200 0 14.0268981457
+ekf250 real-time priority              (-r) 0 0 14.0268981457
+ekf250 stack size              (kbytes, -s) unlimited 0 14.0268981457
+ekf250 cpu time               (seconds, -t) unlimited 0 14.0268981457
+ekf250 max user processes              (-u) 16384 0 14.0268981457
+ekf250 virtual memory          (kbytes, -v) unlimited 0 14.0268981457
+ekf250 file locks                      (-x) unlimited 0 14.0268981457
+ekf250 ERRORS=                                                      #  0 14.0268981457
+ekf250 check_mounts       1.0 0  0 14.0268981457
+ekf250 + test -e /var/lock/mounts 0 14.0268981457
+ekf250 + test -n '' 0 14.0268981457
+ekf250 + /usr/bin/awk '{print $1}' 0 14.0268981457
+ekf250 + env -i LANG=en_US.UTF-8 /bin/egrep 'nfs|lustre' /proc/mounts 0 14.0268981457
+ekf250 + /bin/grep -v -e lfs10 -e '/admin ' 0 14.0268981457
+ekf250 + LANG=en_US.UTF-8 0 14.0268981457
+ekf250 + /bin/sort 0 14.0268981457
+ekf250 + /bin/cut '-d ' -f 1 0 14.0268981457
+ekf250 + diff /var/lock/mounts_n /var/lock/mounts  0 14.0268981457
+ekf250 config_lustre      1.0 0   0 14.0268981457
+
+
+printout information on OPA switches used
+ekf039 HCA-1 SW1W16Upper
+ekf062 HCA-1 SW1W15Lower
+ekf215 HCA-1 SW1W10Lower
+ekf250 HCA-1 SW1W09Lower 
+
+
+Closing nodes during run
+closing node ekf039
+Close <ekf039> ...... done
+closing node ekf062
+Close <ekf062> ...... done
+closing node ekf215
+Close <ekf215> ...... done
+closing node ekf250
+Close <ekf250> ...... done
+
+*************** REPORT ***************
+
+Cluster   Endeavour
+LSF_QUEUE inteldevq
+LSF_JOBID 611734
+Nodes     ekf039 ekf062 ekf215 ekf250
+#Nodes    4
+boot opts: ekf[039,062,215,250]:initrd=initramfs-3.10.0-514.6.2.0.1.el7.x86_64.knl1.img ro root=/dev/sda6 rd_NO_LUKS rd_NO_LVM rd_NO_DM rd_NO_MD LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 KEYBOARDTYPE=pc KEYTABLE=us panic=30 consoleblank=0 console=tty0 console=ttyS0,115200,8N1 console=ttyS1,115200,8N1 biosdevname=0 net.ifnames=0 ipv6.disable=1 rdshell rdloaddriver=ahci selinux=0 numa_zonelist_order=N nosmap intel_pstate=disable modprobe.blacklist=intel_qat,qat_c3xxx,qat_c3xxxvf,qat_c62x,qat_c62xvf,intel_qat,qat_dh895xcc,qat_dh895xccvf CRTBOOT=default BOOT_IMAGE=vmlinuz-3.10.0-514.6.2.0.1.el7.x86_64.knl1
+OFED     : ekf[039,062,215,250]:/usr/local/ofed/10.2.0.0.158_72
+IB_card  : ekf[039,062,215,250]:
+IB_cardFW: ekf[039,062,215,250]:
+Kernel   : ekf[039,062,215,250]:3.10.0-514.6.2.0.1.el7.x86_64.knl1
+Ram      : ekf[039,062,215,250]:1153904
+CPU_speed: ekf[039,062,215,250]:272*cpu MHz 1400.000
+BIOS_Ver : ekf[039,062,215,250]:S72C610.86B.01.01.0190.080520162104
+FRU      : ekf[039,062,215,250]:
+HugePages: ekf[039,062,215,250]:0
+THP      : ekf[039,062,215,250]:[always] madvise never
+Thm-IRQ via uptrack: ekf[039,062,215,250]:
+Information on Chipset Settings: ekf[039,062,215,250]:
+  speedstep setting            : ekf[039,062,215,250]:EIST=0
+  cpuspeed daemon              : ekf[039,062,215,250]:
+  cpufreq driver               : ekf[039,062,215,250]:acpi-cpufreq
+  governor                     : ekf[039,062,215,250]:userspace
+  Frequency                    : ekf[039,062,215,250]:1400000
+syscfg entries: ekf[039,062,215,250]:
+  Memory Mode                : ekf[039,062,215,250]:Memory Mode=Flat                                   ;Options: Cache=00: Flat=01: Hybrid=02: Auto=03
+  Cluster Mode               : ekf[039,062,215,250]:Cluster Mode=Quadrant                              ;Options: All2All=00: SNC-2=01: SNC-4=02: Hemisphere=03: Quadrant=04: Auto=05
+OPA driver: ekf[039,062,215,250]:
+             eager_buffer_size : ekf[039,062,215,250]:2097152
+                       max_mtu : ekf[039,062,215,250]:10240
+             num_user_contexts : ekf[039,062,215,250]:68
+Lustre: ekf[039,062,215,250]:
+        osc.*.max_pages_per_rpc: ekf[039,062,215,250]:1024
+256: ekf[039,062,215,250]:
+       osc.*.max_rpcs_in_flight: ekf[039,062,215,250]:8
+      llite.*.max_read_ahead_mb: ekf[039,062,215,250]:64
+             osc.*.max_dirty_mb: ekf[039,062,215,250]:32
+                osc.*.checksums: ekf[039,062,215,250]:0
+     max_read_ahead_per_file_mb: ekf[039,062,215,250]:64
+                  max_cached_mb: ekf[039,062,215,250]:56342
+                          debug: ekf[039,062,215,250]:debug=ioctl neterror warning error emerg ha config console lfsck
+                subsystem_debug: ekf[039,062,215,250]:subsystem_debug= undefined mdc mds osc ost class log llite rpc mgmt lnet lnd pinger filter echo ldlm lov lquota osd lfsck snapshot lmv sec gss mgc mgs fid fld
+irqbalance daemon              : ekf[062]:Active: active  since Mon 2017-06-19 19:21:54 MDT; 50min ago ; ekf[039]:Active: active  since Mon 2017-06-19 19:41:02 MDT; 31min ago ; ekf[215]:Active: active  since Mon 2017-06-19 19:51:58 MDT; 20min ago ; ekf[250]:Active: active  since Mon 2017-06-19 19:58:57 MDT; 13min ago
+CPUonline : ekf[039,062,215,250]:11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+debugging scheduling
+
+Job <611734>, Job Name <knl4-1>, User <wangwei3>, Project <default>, Command <b
+                     ash ~/shared/caffe_multi_node.sh>
+Mon Jun 19 20:11:00: Submitted from host <eln6>, to Queue <inteldevq>, CWD <$HO
+                     ME/shared>, Output File <knl_4-1.out>, Error File <knl_4-1
+                     .err>, 4 Processors Requested, Requested Resources <4*{sel
+                     ect[ekf] span[ptile=1]}>;
+
+ RUNLIMIT                
+ 20.0 min of eln6
+Mon Jun 19 20:11:20: Dispatched to 4 Hosts/Processors <ekf215> <ekf039> <ekf250
+                     > <ekf062>, Effective RES_REQ <4*{select[(ekf) && (type ==
+                      any)] order[r15s:pg]  span[ptile=1] }>;
+Mon Jun 19 20:11:20: Starting (Pid 21062);
+
+Summary of time in seconds spent in various states by  Mon Jun 19 20:12:23
+  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL
+  20       0        63       0        0        0        83
+
+Prologue finished, program starts @Mon Jun 19 20:12:24 2017
+
+limits:
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 450658
+max locked memory       (kbytes, -l) 113000000
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 50000
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 16384
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+THREAD SETTINGS: Affinity proclist=[0-5,10-67],granularity=thread,explicit Threads 64 Placement
+numthreads_proc 64 max_ppn 1
+[0] [0] MPI startup(): Intel(R) MPI Library, Version 2017 Update 1  Build 20161016 (id: 16418)
+[0] [0] MPI startup(): Copyright (C) 2003-2016 Intel Corporation.  All rights reserved.
+[0] [0] MPI startup(): Multi-threaded optimized library
+[2] ekf215.23480__psm2_init: PSM2: $Date: 2016-09-08 17:20 HFI $ version: 2.1, from /usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2:/usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2
+[3] ekf250.23447__psm2_init: PSM2: $Date: 2016-09-08 17:20 HFI $ version: 2.1, from /usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2:/usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2
+[1] ekf062.23049__psm2_init: PSM2: $Date: 2016-09-08 17:20 HFI $ version: 2.1, from /usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2:/usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2
+[0] ekf039.48313__psm2_init: PSM2: $Date: 2016-09-08 17:20 HFI $ version: 2.1, from /usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2:/usr/local/ofed/10.2.0.0.158_72/lib64/libpsm2.so.2
+[2] [2] MPI startup(): tmi data transfer mode
+[1] [1] MPI startup(): tmi data transfer mode
+[0] [0] MPI startup(): tmi data transfer mode
+[3] [3] MPI startup(): tmi data transfer mode
+[0] [0] MPI startup(): Device_reset_idx=12
+[0] [0] MPI startup(): Allgather: 2: 0-0 & 0-2
+[0] [0] MPI startup(): Allgather: 3: 1-32768 & 0-2
+[0] [0] MPI startup(): Allgather: 1: 32769-262144 & 0-2
+[0] [0] MPI startup(): Allgather: 3: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Allgather: 1: 0-39375 & 3-4
+[0] [0] MPI startup(): Allgather: 3: 39376-75110 & 3-4
+[0] [0] MPI startup(): Allgather: 1: 75111-133246 & 3-4
+[0] [0] MPI startup(): Allgather: 5: 133247-408728 & 3-4
+[0] [0] MPI startup(): Allgather: 1: 408729-603361 & 3-4
+[0] [0] MPI startup(): Allgather: 5: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Allgather: 1: 0-32768 & 5-8
+[0] [0] MPI startup(): Allgather: 5: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Allgather: 3: 0-0 & 9-16
+[0] [0] MPI startup(): Allgather: 1: 1-6551 & 9-16
+[0] [0] MPI startup(): Allgather: 5: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Allgather: 3: 0-0 & 17-32
+[0] [0] MPI startup(): Allgather: 1: 1-4096 & 17-32
+[0] [0] MPI startup(): Allgather: 5: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Allgather: 3: 0-0 & 33-2147483647
+[0] [0] MPI startup(): Allgather: 1: 1-129 & 33-2147483647
+[0] [0] MPI startup(): Allgather: 5: 130-256 & 33-2147483647
+[0] [0] MPI startup(): Allgather: 1: 257-512 & 33-2147483647
+[0] [0] MPI startup(): Allgather: 5: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 3: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Allgatherv: 2: 0-0 & 3-4
+[0] [0] MPI startup(): Allgatherv: 1: 1-1 & 3-4
+[0] [0] MPI startup(): Allgatherv: 2: 2-4 & 3-4
+[0] [0] MPI startup(): Allgatherv: 1: 5-19 & 3-4
+[0] [0] MPI startup(): Allgatherv: 2: 20-56 & 3-4
+[0] [0] MPI startup(): Allgatherv: 1: 57-3051 & 3-4
+[0] [0] MPI startup(): Allgatherv: 2: 3052-7899 & 3-4
+[0] [0] MPI startup(): Allgatherv: 1: 7900-10669 & 3-4
+[0] [0] MPI startup(): Allgatherv: 3: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Allgatherv: 1: 0-1024 & 5-8
+[0] [0] MPI startup(): Allgatherv: 2: 1025-7874 & 5-8
+[0] [0] MPI startup(): Allgatherv: 1: 7875-9629 & 5-8
+[0] [0] MPI startup(): Allgatherv: 2: 9630-22294 & 5-8
+[0] [0] MPI startup(): Allgatherv: 3: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Allgatherv: 1: 0-301 & 9-16
+[0] [0] MPI startup(): Allgatherv: 2: 302-10545 & 9-16
+[0] [0] MPI startup(): Allgatherv: 3: 10546-65536 & 9-16
+[0] [0] MPI startup(): Allgatherv: 2: 65537-170405 & 9-16
+[0] [0] MPI startup(): Allgatherv: 3: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Allgatherv: 1: 0-17903 & 17-32
+[0] [0] MPI startup(): Allgatherv: 2: 17904-67806 & 17-32
+[0] [0] MPI startup(): Allgatherv: 3: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Allgatherv: 1: 0-2555 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 2: 2556-8136 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 1: 8137-8599 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 2: 8600-34121 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 3: 34122-524288 & 33-2147483647
+[0] [0] MPI startup(): Allgatherv: 2: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Allreduce: 1: 0-4 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 5-8 & 0-2
+[0] [0] MPI startup(): Allreduce: 1: 9-64 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 65-128 & 0-2
+[0] [0] MPI startup(): Allreduce: 1: 129-256 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 257-512 & 0-2
+[0] [0] MPI startup(): Allreduce: 1: 513-4096 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 4097-77480 & 0-2
+[0] [0] MPI startup(): Allreduce: 8: 77481-206451 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 206452-297216 & 0-2
+[0] [0] MPI startup(): Allreduce: 8: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Allreduce: 7: 0-0 & 3-4
+[0] [0] MPI startup(): Allreduce: 1: 1-256 & 3-4
+[0] [0] MPI startup(): Allreduce: 7: 257-512 & 3-4
+[0] [0] MPI startup(): Allreduce: 1: 513-14847 & 3-4
+[0] [0] MPI startup(): Allreduce: 7: 14848-16384 & 3-4
+[0] [0] MPI startup(): Allreduce: 1: 16385-52537 & 3-4
+[0] [0] MPI startup(): Allreduce: 2: 52538-147186 & 3-4
+[0] [0] MPI startup(): Allreduce: 8: 147187-371816 & 3-4
+[0] [0] MPI startup(): Allreduce: 2: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Allreduce: 1: 0-27024 & 5-8
+[0] [0] MPI startup(): Allreduce: 2: 27025-157895 & 5-8
+[0] [0] MPI startup(): Allreduce: 8: 157896-441072 & 5-8
+[0] [0] MPI startup(): Allreduce: 2: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Allreduce: 1: 0-16631 & 9-16
+[0] [0] MPI startup(): Allreduce: 2: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Allreduce: 1: 0-14772 & 17-32
+[0] [0] MPI startup(): Allreduce: 2: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Allreduce: 1: 0-16 & 33-2147483647
+[0] [0] MPI startup(): Allreduce: 9: 17-89 & 33-2147483647
+[0] [0] MPI startup(): Allreduce: 1: 90-12212 & 33-2147483647
+[0] [0] MPI startup(): Allreduce: 2: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Alltoall: 3: 0-174074 & 0-2
+[0] [0] MPI startup(): Alltoall: 4: 174075-427708 & 0-2
+[0] [0] MPI startup(): Alltoall: 3: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Alltoall: 3: 0-1 & 3-4
+[0] [0] MPI startup(): Alltoall: 2: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Alltoall: 3: 0-0 & 5-16
+[0] [0] MPI startup(): Alltoall: 2: 0-2147483647 & 5-16
+[0] [0] MPI startup(): Alltoall: 3: 0-0 & 17-32
+[0] [0] MPI startup(): Alltoall: 2: 1-65578 & 17-32
+[0] [0] MPI startup(): Alltoall: 3: 65579-261928 & 17-32
+[0] [0] MPI startup(): Alltoall: 2: 261929-1048576 & 17-32
+[0] [0] MPI startup(): Alltoall: 3: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Alltoall: 3: 0-0 & 33-2147483647
+[0] [0] MPI startup(): Alltoall: 2: 1-65584 & 33-2147483647
+[0] [0] MPI startup(): Alltoall: 4: 65585-261830 & 33-2147483647
+[0] [0] MPI startup(): Alltoall: 2: 261831-750053 & 33-2147483647
+[0] [0] MPI startup(): Alltoall: 4: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Alltoallv: 1: 0-2147483647 & 0-4
+[0] [0] MPI startup(): Alltoallv: 2: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Alltoallv: 1: 0-2147483647 & 9-2147483647
+[0] [0] MPI startup(): Alltoallw: 0: 0-2147483647 & 0-2147483647
+[0] [0] MPI startup(): Barrier: 1: 0-2147483647 & 0-16
+[0] [0] MPI startup(): Barrier: 5: 0-2147483647 & 17-2147483647
+[0] [0] MPI startup(): Bcast: 1: 0-0 & 0-2
+[0] [0] MPI startup(): Bcast: 7: 1-16 & 0-2
+[0] [0] MPI startup(): Bcast: 1: 17-32 & 0-2
+[0] [0] MPI startup(): Bcast: 7: 33-64 & 0-2
+[0] [0] MPI startup(): Bcast: 1: 65-256 & 0-2
+[0] [0] MPI startup(): Bcast: 7: 257-984 & 0-2
+[0] [0] MPI startup(): Bcast: 3: 985-1062 & 0-2
+[0] [0] MPI startup(): Bcast: 7: 1063-4096 & 0-2
+[0] [0] MPI startup(): Bcast: 1: 4097-32768 & 0-2
+[0] [0] MPI startup(): Bcast: 7: 32769-107332 & 0-2
+[0] [0] MPI startup(): Bcast: 3: 107333-150819 & 0-2
+[0] [0] MPI startup(): Bcast: 1: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Bcast: 8: 0-541 & 3-4
+[0] [0] MPI startup(): Bcast: 7: 542-1024 & 3-4
+[0] [0] MPI startup(): Bcast: 1: 1025-4096 & 3-4
+[0] [0] MPI startup(): Bcast: 7: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Bcast: 1: 0-0 & 5-8
+[0] [0] MPI startup(): Bcast: 8: 1-64 & 5-8
+[0] [0] MPI startup(): Bcast: 1: 65-128 & 5-8
+[0] [0] MPI startup(): Bcast: 8: 129-550 & 5-8
+[0] [0] MPI startup(): Bcast: 1: 551-20177 & 5-8
+[0] [0] MPI startup(): Bcast: 2: 20178-223852 & 5-8
+[0] [0] MPI startup(): Bcast: 3: 223853-289028 & 5-8
+[0] [0] MPI startup(): Bcast: 2: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Bcast: 1: 0-0 & 9-16
+[0] [0] MPI startup(): Bcast: 8: 1-549 & 9-16
+[0] [0] MPI startup(): Bcast: 1: 550-17514 & 9-16
+[0] [0] MPI startup(): Bcast: 2: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Bcast: 1: 0-0 & 17-32
+[0] [0] MPI startup(): Bcast: 8: 1-619 & 17-32
+[0] [0] MPI startup(): Bcast: 1: 620-17221 & 17-32
+[0] [0] MPI startup(): Bcast: 2: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Bcast: 1: 0-0 & 33-2147483647
+[0] [0] MPI startup(): Bcast: 8: 1-561 & 33-2147483647
+[0] [0] MPI startup(): Bcast: 1: 562-19243 & 33-2147483647
+[0] [0] MPI startup(): Bcast: 2: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Exscan: 0: 0-2147483647 & 0-2147483647
+[0] [0] MPI startup(): Gather: 3: 0-0 & 0-2
+[0] [0] MPI startup(): Gather: 1: 1-256 & 0-2
+[0] [0] MPI startup(): Gather: 3: 257-512 & 0-2
+[0] [0] MPI startup(): Gather: 1: 513-4096 & 0-2
+[0] [0] MPI startup(): Gather: 3: 4097-26148 & 0-2
+[0] [0] MPI startup(): Gather: 1: 26149-93469 & 0-2
+[0] [0] MPI startup(): Gather: 3: 93470-177883 & 0-2
+[0] [0] MPI startup(): Gather: 1: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Gather: 3: 0-14 & 3-4
+[0] [0] MPI startup(): Gather: 1: 15-40 & 3-4
+[0] [0] MPI startup(): Gather: 3: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Gather: 3: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Gather: 3: 0-13 & 9-16
+[0] [0] MPI startup(): Gather: 1: 14-16 & 9-16
+[0] [0] MPI startup(): Gather: 3: 17-32 & 9-16
+[0] [0] MPI startup(): Gather: 1: 33-75 & 9-16
+[0] [0] MPI startup(): Gather: 3: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Gather: 3: 0-0 & 17-32
+[0] [0] MPI startup(): Gather: 1: 1-557 & 17-32
+[0] [0] MPI startup(): Gather: 3: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Gather: 1: 0-798 & 33-2147483647
+[0] [0] MPI startup(): Gather: 3: 799-37131 & 33-2147483647
+[0] [0] MPI startup(): Gather: 1: 37132-261913 & 33-2147483647
+[0] [0] MPI startup(): Gather: 3: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Gatherv: 1: 0-2147483647 & 0-2147483647
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-0 & 0-2
+[0] [0] MPI startup(): Reduce_scatter: 1: 1-4 & 0-2
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Reduce_scatter: 1: 0-64 & 3-4
+[0] [0] MPI startup(): Reduce_scatter: 3: 65-67420 & 3-4
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Reduce_scatter: 1: 0-64 & 5-8
+[0] [0] MPI startup(): Reduce_scatter: 3: 65-82086 & 5-8
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Reduce_scatter: 1: 0-128 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 3: 129-256 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 1: 257-1024 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 3: 1025-2048 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 1: 2049-8192 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 3: 8193-20664 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 1: 20665-116433 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Reduce_scatter: 1: 0-91307 & 17-32
+[0] [0] MPI startup(): Reduce_scatter: 3: 91308-201000 & 17-32
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Reduce_scatter: 1: 0-74869 & 33-2147483647
+[0] [0] MPI startup(): Reduce_scatter: 3: 74870-337944 & 33-2147483647
+[0] [0] MPI startup(): Reduce_scatter: 2: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Reduce: 1: 0-10491 & 0-2
+[0] [0] MPI startup(): Reduce: 7: 10492-39321 & 0-2
+[0] [0] MPI startup(): Reduce: 2: 39322-73593 & 0-2
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Reduce: 1: 0-0 & 3-4
+[0] [0] MPI startup(): Reduce: 7: 1-14210 & 3-4
+[0] [0] MPI startup(): Reduce: 2: 14211-80306 & 3-4
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Reduce: 1: 0-0 & 5-8
+[0] [0] MPI startup(): Reduce: 7: 1-2414 & 5-8
+[0] [0] MPI startup(): Reduce: 2: 2415-78604 & 5-8
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Reduce: 1: 0-0 & 9-16
+[0] [0] MPI startup(): Reduce: 7: 1-8288 & 9-16
+[0] [0] MPI startup(): Reduce: 2: 8289-48601 & 9-16
+[0] [0] MPI startup(): Reduce: 5: 48602-131676 & 9-16
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Reduce: 1: 0-0 & 17-32
+[0] [0] MPI startup(): Reduce: 7: 1-10108 & 17-32
+[0] [0] MPI startup(): Reduce: 2: 10109-34781 & 17-32
+[0] [0] MPI startup(): Reduce: 5: 34782-198046 & 17-32
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Reduce: 1: 0-0 & 33-2147483647
+[0] [0] MPI startup(): Reduce: 7: 1-12907 & 33-2147483647
+[0] [0] MPI startup(): Reduce: 2: 12908-33959 & 33-2147483647
+[0] [0] MPI startup(): Reduce: 5: 33960-346158 & 33-2147483647
+[0] [0] MPI startup(): Reduce: 1: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Scan: 0: 0-2147483647 & 0-2147483647
+[0] [0] MPI startup(): Scatter: 3: 0-0 & 0-2
+[0] [0] MPI startup(): Scatter: 1: 1-8192 & 0-2
+[0] [0] MPI startup(): Scatter: 3: 8193-16384 & 0-2
+[0] [0] MPI startup(): Scatter: 1: 16385-32768 & 0-2
+[0] [0] MPI startup(): Scatter: 3: 32769-131072 & 0-2
+[0] [0] MPI startup(): Scatter: 1: 131073-262144 & 0-2
+[0] [0] MPI startup(): Scatter: 3: 262145-524288 & 0-2
+[0] [0] MPI startup(): Scatter: 1: 524289-1048576 & 0-2
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 0-2
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 3-4
+[0] [0] MPI startup(): Scatter: 1: 0-0 & 5-8
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 5-8
+[0] [0] MPI startup(): Scatter: 1: 0-0 & 9-16
+[0] [0] MPI startup(): Scatter: 3: 1-42261 & 9-16
+[0] [0] MPI startup(): Scatter: 1: 42262-88124 & 9-16
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 9-16
+[0] [0] MPI startup(): Scatter: 1: 0-0 & 17-32
+[0] [0] MPI startup(): Scatter: 3: 1-104 & 17-32
+[0] [0] MPI startup(): Scatter: 1: 105-512 & 17-32
+[0] [0] MPI startup(): Scatter: 3: 513-16384 & 17-32
+[0] [0] MPI startup(): Scatter: 1: 16385-109690 & 17-32
+[0] [0] MPI startup(): Scatter: 3: 109691-195483 & 17-32
+[0] [0] MPI startup(): Scatter: 1: 195484-262144 & 17-32
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 17-32
+[0] [0] MPI startup(): Scatter: 1: 0-0 & 33-2147483647
+[0] [0] MPI startup(): Scatter: 3: 1-10 & 33-2147483647
+[0] [0] MPI startup(): Scatter: 1: 11-126818 & 33-2147483647
+[0] [0] MPI startup(): Scatter: 3: 0-2147483647 & 33-2147483647
+[0] [0] MPI startup(): Scatterv: 1: 0-2147483647 & 0-2147483647
+[2] [2] MPI startup(): Recognition=2 Platform(code=256 ippn=0 dev=15) Fabric(intra=3 inter=3 flags=0x0)
+[1] [1] MPI startup(): Recognition=2 Platform(code=256 ippn=0 dev=15) Fabric(intra=3 inter=3 flags=0x0)
+[0] [0] MPI startup(): Rank    Pid      Node name  Pin cpu
+[3] [3] MPI startup(): Recognition=2 Platform(code=256 ippn=0 dev=15) Fabric(intra=3 inter=3 flags=0x0)
+[0] [0] MPI startup(): 0       48313    ekf039     {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
+[0]                                  30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56
+[0]                                  ,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,8
+[0]                                  3,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,10
+[0]                                  7,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,12
+[0]                                  7,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,14
+[0]                                  7,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,16
+[0]                                  7,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,18
+[0]                                  7,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,20
+[0]                                  7,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,22
+[0]                                  7,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,24
+[0]                                  7,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,26
+[0]                                  7,268,269,270,271}
+[0] [0] MPI startup(): 1       23049    ekf062     {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
+[0]                                  30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56
+[0]                                  ,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,8
+[0]                                  3,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,10
+[0]                                  7,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,12
+[0]                                  7,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,14
+[0]                                  7,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,16
+[0]                                  7,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,18
+[0]                                  7,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,20
+[0]                                  7,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,22
+[0]                                  7,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,24
+[0]                                  7,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,26
+[0]                                  7,268,269,270,271}
+[0] [0] MPI startup(): 2       23480    ekf215     {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
+[0]                                  30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56
+[0]                                  ,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,8
+[0]                                  3,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,10
+[0]                                  7,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,12
+[0]                                  7,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,14
+[0]                                  7,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,16
+[0]                                  7,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,18
+[0]                                  7,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,20
+[0]                                  7,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,22
+[0]                                  7,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,24
+[0]                                  7,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,26
+[0]                                  7,268,269,270,271}
+[0] [0] MPI startup(): 3       23447    ekf250     {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
+[0]                                  30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56
+[0]                                  ,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,8
+[0]                                  3,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,10
+[0]                                  7,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,12
+[0]                                  7,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,14
+[0]                                  7,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,16
+[0]                                  7,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,18
+[0]                                  7,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,20
+[0]                                  7,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,22
+[0]                                  7,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,24
+[0]                                  7,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,26
+[0]                                  7,268,269,270,271}
+[0] [0] MPI startup(): Recognition=2 Platform(code=256 ippn=0 dev=15) Fabric(intra=3 inter=3 flags=0x0)
+[0] [0] MPI startup(): I_MPI_COLL_INTRANODE=pt2pt
+[0] [0] MPI startup(): I_MPI_DEBUG=6
+[0] [0] MPI startup(): I_MPI_FABRICS=tmi
+[0] [0] MPI startup(): I_MPI_HYDRA_UUID=ac5b0000-9f00-d7c8-5a52-05000a172465
+[0] [0] MPI startup(): I_MPI_INFO_NUMA_NODE_MAP=hfi1_0:0,hfi1_1:0
+[0] [0] MPI startup(): I_MPI_INFO_NUMA_NODE_NUM=2
+[0] [0] MPI startup(): I_MPI_PIN_MAPPING=1:0 0
+[0] [0] MPI startup(): I_MPI_TMI_PROVIDER=psm2
+[mpiexec@ekf215] HYDT_dmx_register_fd (../../tools/demux/demux.c:101): registering duplicate fd 0
+[mpiexec@ekf215] HYDT_bscd_lsf_launch_procs (../../tools/bootstrap/external/lsf_launch.c:155): demux returned error registering fd
+[mpiexec@ekf215] HYDT_bsci_launch_procs (../../tools/bootstrap/src/bsci_launch.c:30): launcher returned error while launching processes
+[mpiexec@ekf215] fn_spawn (../../pm/pmiserv/pmiserv_pmi_v1.c:1000): launcher cannot launch processes
+[mpiexec@ekf215] handle_pmi_cmd (../../pm/pmiserv/pmiserv_cb.c:69): PMI handler returned error
+[mpiexec@ekf215] control_cb (../../pm/pmiserv/pmiserv_cb.c:957): unable to process PMI command
+[mpiexec@ekf215] HYDT_dmxu_poll_wait_for_event (../../tools/demux/demux_poll.c:76): callback returned error status
+[mpiexec@ekf215] HYD_pmci_wait_for_completion (../../pm/pmiserv/pmiserv_pmci.c:501): error waiting for event
+[mpiexec@ekf215] main (../../ui/mpich/mpiexec.c:1147): process manager error waiting for completion
+
+===================================================================
+power readings of job from nodemanager on nodes :ekf039,ekf062,ekf215,ekf250:
+===================================================================
+
+ekf215: CUR:222 MIN:212 MAX:227 AVG:218
+ekf062: CUR:224 MIN:213 MAX:233 AVG:217
+ekf250: CUR:220 MIN:212 MAX:225 AVG:216
+ekf039: CUR:213 MIN:204 MAX:221 AVG:207
+
+===================================================================
+Check Stream summary for large variance which would indicate
+bad node(s) and that your performance results are suspect
+
+ekf250: Copy  83742 Scale  83845 Add  87296 Triad  87201
+ekf039: Copy  84615 Scale  84655 Add  88419 Triad  88285
+ekf215: Copy  84480 Scale  84616 Add  88125 Triad  88057
+ekf062: Copy  84295 Scale  84283 Add  87597 Triad  87482
+
+
+Stream Triad summary
+count:  4
+min:  87201
+max:  88285
+mean:  87756.2
+rms:  87757.3
+Length of deficient list: 0
+
+
+PS:
+
+Read file <knl_4-1.err> for stderr output of this job.
+

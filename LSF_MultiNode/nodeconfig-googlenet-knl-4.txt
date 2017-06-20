@@ -1,0 +1,4 @@
+-host ekf048 -genv OMP_NUM_THREADS 64 -n 1 numactl --preferred=0 /home/wangwei3/shared/intelcaffe//build/tools/caffe train --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017
+-host ekf058 -genv OMP_NUM_THREADS 64 -n 1 numactl --preferred=0 /home/wangwei3/shared/intelcaffe//build/tools/caffe train --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017
+-host ekf093 -genv OMP_NUM_THREADS 64 -n 1 numactl --preferred=0 /home/wangwei3/shared/intelcaffe//build/tools/caffe train --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017
+-host ekf150 -genv OMP_NUM_THREADS 64 -n 1 numactl --preferred=0 /home/wangwei3/shared/intelcaffe//build/tools/caffe train --solver models/intel_optimized_models/googlenet/solver.prototxt -engine=MKL2017
