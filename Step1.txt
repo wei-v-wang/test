@@ -1,0 +1,32 @@
+#!/bin/bash
+
+zypper addrepo http://download.opensuse.org/repositories/devel:libraries:c_c++/SLE_12_SP1/devel:libraries:c_c++.repo 
+zypper refresh 
+zypper addrepo http://download.opensuse.org/repositories/devel:tools:building/SLE_12_SP1/devel:tools:building.repo 
+zypper refresh 
+zypper ar http://download.opensuse.org/repositories/systemsmanagement/SLE_12_SP2/systemsmanagement.repo
+zypper refresh 
+zypper addrepo http://download.opensuse.org/repositories/Education/SLE_12/Education.repo   
+zypper refresh
+zypper addrepo http://download.opensuse.org/repositories/multimedia:libs/SLE_12_SP2/multimedia:libs.repo 
+zypper refresh 
+zypper addrepo http://download.opensuse.org/repositories/home:rudi_m:devel-snap/SLE_12_SP1/home:rudi_m:devel-snap.repo 
+zypper refresh 
+zypper repos
+#wget http://download.opensuse.org/repositories/home:/amshinde/CentOS_7/x86_64/zlib-dev-2.4.47-43.2.x86_64.rpm 
+#rpm -ivh zlib-dev-2.4.47-43.2.x86_64.rpm  
+zypper in protobuf 
+zypper in protobuf-devel
+zypper in leveldb
+zypper in leveldb-devel 
+zypper in snappy-devel 
+zypper in libraw1394*
+zypper in libdc1394*
+zypper in opencv 
+zypper in opencv* 
+zypper in boost-devel 
+zypper in hdf5
+zypper in hdf5-devel
+zypper in lmdb 
+zypper in lmdb-devel 
+zypper in cmake 

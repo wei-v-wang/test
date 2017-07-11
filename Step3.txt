@@ -1,0 +1,45 @@
+#!/bin/bash
+
+echo "export PATH=/opt/tools/bin:$PATH" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/opt/tools/lib:$LD_LIBRARY_PATH" >> ~/.bashrc 
+cd /tmp/
+git clone https://github.com/google/glog.git
+cd glog/
+./autogen.sh 
+./configure --prefix=/opt/tools 
+make 
+make install 
+cd /tmp
+wget http://github.com/01org/MLSL/releases/download/v2017-Preview/l_mlsl_p_2017.0.014.tgz 
+mkdir MLSL
+tar xvf l_mlsl_p_2017.0.014.tgz -C  MLSL
+cd MLSL/
+./install.sh  
+echo "source /opt/intel/mlsl_2017.0.014/intel64/bin/mlslvars.sh" >> ~/.bashrc  
+cd ..
+wget https://github.com/01org/MLSL/archive/v2017-Preview.tar.gz 
+tar xvf v2017-Preview.tar.gz  
+cd MLSL-2017-Preview/
+cd test/
+source ~/.bashrc  
+make 
+./mlsl_test 4 
+cd /tmp
+git clone https://github.com/intel/caffe.git 
+cd caffe/
+cp Makefile.config.example  Makefile.config 
+# Second Break to Change Makefile.config vim Makefile.config 
+awk '(NR == 69 ) {print $2 " "$3 " " $4}  (NR != 69) {print $0 } ' Makefile.config.example > tmp1
+awk '(NR == 81 ) {print $2 " " $3}  (NR != 81) {print $0 } ' tmp1 > tmp2
+awk '(NR == 146 ) {print $0 " /opt/tools/include"}  (NR != 146) {print $0 } ' tmp2 > tmp3
+awk '(NR == 147 ) {print $0 " /opt/tools/lib"}  (NR != 147) {print $0 } ' tmp3 > Makefile.config
+make all -j32 
+./build/tools/caffe   
+./data/mnist/get_mnist.sh  
+./examples/mnist/create_mnist.sh  
+./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt 
+echo "export OMP_NUM_THREADS=68" >> ~/.bashrc  
+echo "export KMP_AFFINITY=granularity=fine,proclist=[0-71],explicit" >> ~/.bashrc
+source ~/.bashrc  
+./build/tools/caffe test -model examples/mnist/lenet_train_test.prototxt  -weights examples/mnist/lenet_iter_10000.caffemodel -iterations 100  
+mpirun -n 1 -ppn 1 ./build/tools/caffe test -model examples/mnist/lenet_train_test.prototxt  -weights examples/mnist/lenet_iter_10000.caffemodel -iterations 100  
